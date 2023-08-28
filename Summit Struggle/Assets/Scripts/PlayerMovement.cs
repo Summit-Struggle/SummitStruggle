@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //variables
     Rigidbody2D rb;
     private BoxCollider2D coll;
     private Animator anim;
@@ -31,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetKeyDown("space") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            jumpSoundEffect.Play();
+            // jumpSoundEffect.Play();
         }
 
         dirX = Input.GetAxisRaw("Horizontal");
@@ -51,11 +52,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (dirX > 0f)
         {
+            anim.setBoolean("running", true);
             state = MovementState.running;
             sprite.flipX = false;
         }
         else if (dirX < 0f)
         {
+            anim.setBoolean("running", true);
             state = MovementState.running;
             sprite.flipX = true;
         }
