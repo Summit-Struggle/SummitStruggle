@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-
+    private int health;
+    private int maxhealth;
     private Animator anim;
     private Rigidbody2D rb;
 
     [SerializeField] private AudioSource deathSoundEffect;
+    HealthBar healthBar;
+
+    
     private void Start()
     {
         anim = GetComponent<Animator>();    
@@ -35,5 +39,10 @@ public class PlayerLife : MonoBehaviour
     private void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
+    {
+        healthBar.SetHealth(health);
     }
 }
