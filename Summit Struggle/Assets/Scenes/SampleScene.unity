@@ -1676,7 +1676,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 231702051}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -1797,6 +1797,7 @@ GameObject:
   - component: {fileID: 8480647957926605100}
   - component: {fileID: 8766232173808245644}
   - component: {fileID: 8766232173808245645}
+  - component: {fileID: 8766232173808245646}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -1867,7 +1868,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.39}
+    oldSize: {x: 1.4, y: 1.4}
     newSize: {x: 1.4, y: 1.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1967,6 +1968,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8766232173808245646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045178613663666063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a312b6bc35fe9e44fa3465277d06d7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSoundEffect: {fileID: 0}
+  healthBar: {fileID: 1457348211}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1977,3 +1992,5 @@ SceneRoots:
   - {fileID: 114365215}
   - {fileID: 631617681}
   - {fileID: 1980700172}
+  - {fileID: 316969100}
+  - {fileID: 1658984543}

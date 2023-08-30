@@ -11,7 +11,7 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private AudioSource deathSoundEffect;
-    HealthBar healthBar;
+    [SerializeField] HealthBar healthBar;
 
     
     private void Start()
@@ -42,6 +42,11 @@ public class PlayerLife : MonoBehaviour
     }
 
     private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
+    {
+        healthBar.SetHealth(health);
+    }
+
+    private void HealPlayer() // need to update method and form an equation to calculate what the players new health should be.
     {
         healthBar.SetHealth(health);
     }
