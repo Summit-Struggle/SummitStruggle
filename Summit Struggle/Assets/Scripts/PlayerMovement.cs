@@ -81,6 +81,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Falling", true);
             // state = MovementState.falling;
         }
+        else
+        {
+           anim.SetBool("Falling", false); 
+        }
 
         // anim.SetInteger("state", (int)state);
     }
