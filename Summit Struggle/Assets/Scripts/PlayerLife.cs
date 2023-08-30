@@ -50,4 +50,9 @@ public class PlayerLife : MonoBehaviour
     {
         healthBar.SetHealth(health);
     }
+
+    private void SetPlayersMaxHealth() //sets the players max health, can also do in the unity editor.
+    {
+        healthBar.SetHealth(maxhealth);
+    }
 }
