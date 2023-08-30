@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask jumpableGround;
 
-    private enum MovementState { idle, running, jumping, falling }
+    // private enum MovementState { idle, running, jumping, falling }
 
     [SerializeField] private AudioSource jumpSoundEffect;
     
@@ -31,16 +31,17 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     private void Update()
-    {
-        if (Input.GetKeyDown("space") && IsGrounded())
+    {        
+        dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        
+        if (Input.GetKeyDown("space"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // jumpSoundEffect.Play();
         }
 
-        dirX = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(dirX * moveSpeed,rb.velocity.y);
 
         UpdateAnimation();
         
@@ -48,36 +49,38 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        MovementState state;
+        // MovementState state;
 
         if (dirX > 0f)
         {
-            anim.setBoolean("running", true);
-            state = MovementState.running;
+            anim.SetBool("Running", true);
+            // state = MovementState.running;
             sprite.flipX = false;
         }
         else if (dirX < 0f)
         {
-            anim.setBoolean("running", true);
-            state = MovementState.running;
+            anim.SetBool("Running", true);
+            // state = MovementState.running;
             sprite.flipX = true;
         }
         else
         {
-            state = MovementState.idle;
+            anim.SetBool("Running", false);
+            // state = MovementState.idle;
         }
 
         if (rb.velocity.y > .01f)
         {
-            state = MovementState.jumping;
+            anim.SetBool("Jumping", true);
+            // state = MovementState.jumping;
         }
 
         else if (rb.velocity.y < -.1f)
         {
-            state = MovementState.falling;
+            // state = MovementState.falling;
         }
 
-        anim.SetInteger("state", (int)state);
+        // anim.SetInteger("state", (int)state);
     }
 
     private bool IsGrounded()
