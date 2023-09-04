@@ -57,17 +57,16 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Running", true);
             sprite.flipX = false;
              if (rb.velocity.y > .01f)
-        { 
+             { 
             anim.SetBool("Jumping", true);
             anim.SetBool("Running", false);
            
-        }
+             }
           else if (rb.velocity.y < -.1f)
-        {
-            anim.SetBool("Running", false);
+            {
             anim.SetBool("Jumping", false);
             anim.SetBool("Falling", true);
-        }
+             }
         }
         else if (dirX < 0f)
         {
@@ -88,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            anim.SetBool("Falling", false);
             anim.SetBool("Running", false);
         }
 
