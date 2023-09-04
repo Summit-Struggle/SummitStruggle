@@ -13,10 +13,12 @@ TagManager:
   - Player
   - Water
   - UI
-  - Background
+  - 
   - Terrain
   - Decor
   - 
+  - Enemy
+  - Background
   - 
   - 
   - 
