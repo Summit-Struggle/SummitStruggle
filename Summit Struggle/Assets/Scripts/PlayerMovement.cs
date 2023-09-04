@@ -53,33 +53,54 @@ public class PlayerMovement : MonoBehaviour
 
         if (dirX > 0f)
         {
+            anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
-            // state = MovementState.running;
             sprite.flipX = false;
+             if (rb.velocity.y > .01f)
+        { 
+            anim.SetBool("Jumping", true);
+            anim.SetBool("Running", false);
+           
+        }
+          else if (rb.velocity.y < -.1f)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Falling", true);
+        }
         }
         else if (dirX < 0f)
         {
+            anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
-            // state = MovementState.running;
             sprite.flipX = true;
+               if (rb.velocity.y > .01f)
+        {
+            anim.SetBool("Jumping", true);
+            anim.SetBool("Running", false);
+        }
+          else if (rb.velocity.y < -.1f)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Falling", true);
+        }
         }
         else
         {
             anim.SetBool("Running", false);
-            // state = MovementState.idle;
         }
 
+        //jumping from stationary position
         if (rb.velocity.y > .01f)
         {
             anim.SetBool("Jumping", true);
-            // state = MovementState.jumping;
         }
 
         else if (rb.velocity.y < -.1f)
         {
             anim.SetBool("Jumping", false);
             anim.SetBool("Falling", true);
-            // state = MovementState.falling;
         }
         else
         {
