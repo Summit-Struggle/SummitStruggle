@@ -16777,7 +16777,7 @@ GameObject:
   - component: {fileID: 1386744893}
   - component: {fileID: 1386744895}
   - component: {fileID: 1386744894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16846,7 +16846,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.91, y: -0.74, z: 0}
-  m_LocalScale: {x: 9, y: 8, z: 1}
+  m_LocalScale: {x: -9, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -16946,8 +16946,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 1
   range: 1
-  colliderDistance: 0.19
   damage: 2
+  colliderDistance: 0.3
   boxCollider: {fileID: 1386744893}
   playerLayer:
     serializedVersion: 2

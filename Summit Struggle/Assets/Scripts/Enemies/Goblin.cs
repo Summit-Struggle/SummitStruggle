@@ -4,34 +4,48 @@ using UnityEngine;
 
 public class Goblin : MonoBehaviour
 {
+    //Attack Params
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
-
     [SerializeField] private int damage;
+
+    //Collider Params
+    [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
+
+    //Playyer Layer
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
 
+    //References
+    private Animator anim;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void update()
     {
-        cooldownTimer = Time.deltaTime;
+        cooldownTimer += Time.deltaTime;
 
         //attack only when enemy sees player.
         if(PlayerInSight()){
             if(cooldownTimer >= attackCooldown)
             {
                 //attack
-
+               cooldownTimer = 0;
+                anim.SetTrigger("MeleeAttack");
             }
         }
     }
 
     private bool PlayerInSight()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-        new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z ),
-         0, Vector2.left, 0, playerLayer);
+          RaycastHit2D hit = 
+            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+            0, Vector2.left, 0, playerLayer);
 
         return hit.collider != null;     
     }
@@ -40,6 +54,6 @@ public class Goblin : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-        new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z ));
+            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 }
