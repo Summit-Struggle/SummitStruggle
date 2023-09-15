@@ -535,10 +535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379894751}
   - component: {fileID: 1379894753}
-  - component: {fileID: 1379894754}
   - component: {fileID: 1379894752}
-  - component: {fileID: 1379894756}
-  - component: {fileID: 1379894755}
   m_Layer: 5
   m_Name: 'PauseMenuUI '
   m_TagString: Untagged
@@ -605,45 +602,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379894750}
   m_CullTransparentMesh: 1
---- !u!114 &1379894754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379894750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1379894750}
---- !u!114 &1379894755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379894750}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 2106950139}
---- !u!114 &1379894756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379894750}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1714905580}
 --- !u!1 &1631494042
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,8 +750,6 @@ GameObject:
   - component: {fileID: 1714905584}
   - component: {fileID: 1714905583}
   - component: {fileID: 1714905582}
-  - component: {fileID: 1714905585}
-  - component: {fileID: 1714905586}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -915,32 +871,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714905580}
   m_CullTransparentMesh: 1
---- !u!114 &1714905585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714905580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1714905580}
---- !u!114 &1714905586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714905580}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 2106950139}
 --- !u!1 &2056897712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +951,6 @@ GameObject:
   - component: {fileID: 2106950144}
   - component: {fileID: 2106950143}
   - component: {fileID: 2106950142}
-  - component: {fileID: 2106950141}
   m_Layer: 5
   m_Name: 'Quit Button '
   m_TagString: Untagged
@@ -1049,19 +978,6 @@ RectTransform:
   m_AnchoredPosition: {x: 703.6, y: -195.2}
   m_SizeDelta: {x: 346.044, y: 382.4429}
   m_Pivot: {x: 4, y: 0.5}
---- !u!114 &2106950141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106950139}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cfdd16926f424746b4687c9a3cfe11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
 --- !u!114 &2106950142
 MonoBehaviour:
   m_ObjectHideFlags: 0
