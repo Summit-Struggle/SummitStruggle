@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] private LayerMask jumpableGround;
 
-    // private enum MovementState { idle, running, jumping, falling }
 
     [SerializeField] private AudioSource jumpSoundEffect;
     
@@ -39,6 +38,16 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // jumpSoundEffect.Play();
+        }
+
+        //player attack
+        if (Input.GetKeyDown(z))
+        {
+            if(playerAttack())
+            {
+                anim.setTrigger("melee");
+                //enemy takes damage
+            }
         }
 
 
@@ -107,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
            anim.SetBool("Falling", false); 
         }
 
-        // anim.SetInteger("state", (int)state);
     }
 
     private bool IsGrounded()
@@ -115,4 +123,8 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
+    private bool playerAttack()
+    {
+
+    }
 }
