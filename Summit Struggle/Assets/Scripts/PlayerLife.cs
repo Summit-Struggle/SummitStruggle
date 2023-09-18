@@ -17,7 +17,13 @@ public class PlayerLife : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();    
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+        maxhealth = 100;
+        health = 100;
+        SetPlayersMaxHealth();
+        healthBar.SetHealth(maxhealth);
+        Debug.Log("health = " + health);
+        Debug.Log("Max health = " + maxhealth);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -27,6 +33,14 @@ public class PlayerLife : MonoBehaviour
             Die();
         }
 
+        if (collision.gameObject.CompareTag("20%damage"))
+        {
+            health = health - (int)(maxhealth * 0.2);
+            TakeDamage();
+            Debug.Log("collision");
+        }
+
+        Debug.Log("health = " + health);
     }
 
     private void Die()
@@ -40,7 +54,6 @@ public class PlayerLife : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
     private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
     {
         healthBar.SetHealth(health);
