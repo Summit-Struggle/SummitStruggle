@@ -15,6 +15,7 @@ public class PauseMenuUI : MonoBehaviour
         // Check for the "Escape" key to toggle between pause and resume
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+
             if (GameIsPaused)
             {
                 Resume();
@@ -43,6 +44,7 @@ public class PauseMenuUI : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quitting game..");
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 
