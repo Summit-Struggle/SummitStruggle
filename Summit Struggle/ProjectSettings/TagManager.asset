@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - Spikes
+  - 20%damage
   layers:
   - Default
   - TransparentFX
