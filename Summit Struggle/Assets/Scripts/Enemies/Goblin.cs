@@ -40,8 +40,8 @@ public class MeleeEnemy : MonoBehaviour
             }
         }
 
-         if (enemyPatrol != null)
-           enemyPatrol.enabled = !PlayerInSight();
+        if (enemyPatrol != null)
+            enemyPatrol.enabled = !PlayerInSight();
     }
 
     private bool PlayerInSight()
@@ -51,7 +51,7 @@ public class MeleeEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
 
-         if (hit.collider != null)
+        if (hit.collider != null)
             playerHealth = hit.transform.GetComponent<Health>();
 
         return hit.collider != null;
@@ -63,9 +63,9 @@ public class MeleeEnemy : MonoBehaviour
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
-    // private void DamagePlayer()
-    // {
-    //     if (PlayerInSight())
-    //        playerLife.TakeDamage(damage);
-    // }
+    private void DamagePlayer()
+    {
+        if (PlayerInSight())
+            playerHealth.TakeDamage(damage);
+    }
 }
