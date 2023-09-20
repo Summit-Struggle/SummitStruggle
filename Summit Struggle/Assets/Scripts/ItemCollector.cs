@@ -19,20 +19,21 @@ public class ItemCollector : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Cherry"))
+/*        if(collision.gameObject.CompareTag("Cherry"))
         {
             Destroy(collision.gameObject);
             cherries++;
             Debug.Log("Cherries: " + cherries);
             cherriesText.text = "Cherries: " + cherries;
             collectionSoundEffect.Play();
-        }
+        }*/
 
         if(collision.gameObject.CompareTag("Heart"))
         {
             Destroy(collision.gameObject);
             int healAmount = (int)((double)playerLife.getMaxHealth() * 0.35);
             playerLife.HealPlayer(healAmount);
+            Debug.Log("Hit heart");
         }
 
 

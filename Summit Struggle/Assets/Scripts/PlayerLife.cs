@@ -28,11 +28,19 @@ public class PlayerLife : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(health == 0)
+        {
+            Die();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            Die();
+            twentyPercentDmg();
         }
 
 
@@ -40,13 +48,21 @@ public class PlayerLife : MonoBehaviour
         {
             twentyPercentDmg();
         }
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            health = 0;
+            TakeDamage();
+        }
     }
 
     private void Die()
     {
-        anim.SetTrigger("death");
+       /* anim.SetTrigger("death");
+        deathSoundEffect.Play();*/
         rb.bodyType = RigidbodyType2D.Static;
-        deathSoundEffect.Play();
+        Debug.Log("Death");
+        RestartLevel();
     }
 
     private void twentyPercentDmg ()
