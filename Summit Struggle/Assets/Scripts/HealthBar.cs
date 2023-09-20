@@ -8,6 +8,12 @@ public class HealthBar : MonoBehaviour
 
     public Slider healthSlider; // slider from the unity engine for health bar
 
+    private void Start()
+    {
+        SetMaxHealth(100);
+        SetHealth(100);
+    }
+
     public void SetHealth(int health) //function that sets the health of the bar/slider
     {
         healthSlider.value = health;

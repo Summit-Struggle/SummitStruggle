@@ -22,9 +22,9 @@ public class PlayerLife : MonoBehaviour
         //Sets max and current health to 100
         maxhealth = 100;
         health = 100;
-        SetPlayersMaxHealth();
-        healthBar.SetHealth(maxhealth);
 
+        Debug.Log("max health: " + maxhealth);
+        Debug.Log("Health: " + health);
 
     }
 
@@ -53,6 +53,7 @@ public class PlayerLife : MonoBehaviour
     {
         health = health - (int)(maxhealth * 0.2);
         TakeDamage();
+        Debug.Log("Health: " + health);
     }
 
     private void RestartLevel()
