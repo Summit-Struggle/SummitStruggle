@@ -7,6 +7,8 @@ TagManager:
   - Trap
   - Spikes
   - 20%damage
+  - Heart
+  - Death
   layers:
   - Default
   - TransparentFX

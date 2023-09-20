@@ -28,11 +28,19 @@ public class PlayerLife : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if(health == 0)
+        {
+            Die();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            Die();
+            twentyPercentDmg();
         }
 
 
@@ -40,13 +48,21 @@ public class PlayerLife : MonoBehaviour
         {
             twentyPercentDmg();
         }
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            health = 0;
+            TakeDamage();
+        }
     }
 
     private void Die()
     {
-        anim.SetTrigger("death");
+       /* anim.SetTrigger("death");
+        deathSoundEffect.Play();*/
         rb.bodyType = RigidbodyType2D.Static;
-        deathSoundEffect.Play();
+        Debug.Log("Death");
+        RestartLevel();
     }
 
     private void twentyPercentDmg ()
@@ -65,8 +81,17 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
-    private void HealPlayer() // need to update method and form an equation to calculate what the players new health should be.
+    public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
+        if((health + amount) > maxhealth)
+        {
+            health = maxhealth;
+        } else
+        {
+            health = health + amount;
+        }
+
+
         healthBar.SetHealth(health);
     }
 
@@ -74,4 +99,16 @@ public class PlayerLife : MonoBehaviour
     {
         healthBar.SetHealth(maxhealth);
     }
+
+    public int getHealth ()
+    {
+        return this.health;
+    }
+
+    public int getMaxHealth ()
+    {
+        return this.maxhealth;
+    }
+
+
 }
