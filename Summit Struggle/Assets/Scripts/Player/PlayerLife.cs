@@ -41,14 +41,24 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
+    public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
     {
+        health -= damage;
         healthBar.SetHealth(health);
+        if(health <= 0)
+            Die();
+        else
+        {
+            anim.SetTrigger("TakeDamage");
+        }
     }
 
-    private void HealPlayer() // need to update method and form an equation to calculate what the players new health should be.
+    public void HealPlayer(int healing) // need to update method and form an equation to calculate what the players new health should be.
     {
-        healthBar.SetHealth(health);
+        health += healing;
+        if(health > maxhealth)
+            health = maxhealth;
+        healthBar.SetHealth(health + healing);
     }
 
     private void SetPlayersMaxHealth() //sets the players max health, can also do in the unity editor.
