@@ -40,18 +40,6 @@ public class PlayerMovement : MonoBehaviour
             // jumpSoundEffect.Play();
         }
 
-        //player attack
-        if (Input.GetKeyDown(z))
-        {
-            if(playerAttack())
-            {
-                anim.setTrigger("melee");
-                //enemy takes damage
-            }
-        }
-
-
-
         UpdateAnimation();
         
     }
@@ -116,15 +104,19 @@ public class PlayerMovement : MonoBehaviour
            anim.SetBool("Falling", false); 
         }
 
-    }
+    }}
 
-    private bool IsGrounded()
-    {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
-    }
+    // private void Jump()
+    // {
+    //     if (IsGrounded())
+    //     {
+    //         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    //         anim.SetTrigger("")
+    //     }
+    // }
 
-    private bool playerAttack()
-    {
+    // private bool IsGrounded()
+    // {
+    //     return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    // }}
 
-    }
-}
