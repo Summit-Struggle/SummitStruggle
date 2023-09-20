@@ -65,8 +65,17 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
-    private void HealPlayer() // need to update method and form an equation to calculate what the players new health should be.
+    public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
+        if((health + amount) > maxhealth)
+        {
+            health = maxhealth;
+        } else
+        {
+            health = health + amount;
+        }
+
+
         healthBar.SetHealth(health);
     }
 
@@ -74,4 +83,16 @@ public class PlayerLife : MonoBehaviour
     {
         healthBar.SetHealth(maxhealth);
     }
+
+    public int getHealth ()
+    {
+        return this.health;
+    }
+
+    public int getMaxHealth ()
+    {
+        return this.maxhealth;
+    }
+
+
 }
