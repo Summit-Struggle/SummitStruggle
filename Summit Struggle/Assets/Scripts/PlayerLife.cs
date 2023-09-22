@@ -81,6 +81,20 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
+    //Separate damage for goblin attack
+    public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            healthBar.SetHealth(health);
+        }
+    }
+
     public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
         if((health + amount) > maxhealth)
