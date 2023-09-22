@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     private int health;
-    private int maxhealth;
+    [SerializeField] private int maxhealth;
     private Animator anim;
     private Rigidbody2D rb;
 
     [SerializeField] private AudioSource deathSoundEffect;
     [SerializeField] HealthBar healthBar;
+
+     [Header("Components")]
+    [SerializeField] private Behaviour[] components;
+    private bool dead;
 
     
     private void Start()
@@ -31,9 +35,9 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
-        anim.SetTrigger("death");
+        anim.SetTrigger("Die");
         rb.bodyType = RigidbodyType2D.Static;
-        deathSoundEffect.Play();
+       // deathSoundEffect.Play();
     }
 
     private void RestartLevel()
@@ -44,12 +48,13 @@ public class PlayerLife : MonoBehaviour
     public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
     {
         health -= damage;
-        healthBar.SetHealth(health);
+       // healthBar.SetHealth(health);
         if(health <= 0)
             Die();
         else
         {
             anim.SetTrigger("TakeDamage");
+            RestartLevel();
         }
     }
 
@@ -58,11 +63,11 @@ public class PlayerLife : MonoBehaviour
         health += healing;
         if(health > maxhealth)
             health = maxhealth;
-        healthBar.SetHealth(health + healing);
+      //  healthBar.SetHealth(health + healing);
     }
 
     private void SetPlayersMaxHealth() //sets the players max health, can also do in the unity editor.
     {
-        healthBar.SetHealth(maxhealth);
+       // healthBar.SetHealth(maxhealth);
     }
 }
