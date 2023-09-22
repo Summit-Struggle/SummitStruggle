@@ -21,23 +21,59 @@ public class PlayerLife : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();    
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+
+        //Sets max and current health to 100
+        maxhealth = 100;
+        health = 100;
+
+        Debug.Log("max health: " + maxhealth);
+        Debug.Log("Health: " + health);
+
+    }
+
+    private void Update()
+    {
+        if(health == 0)
+        {
+            Die();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            Die();
+            twentyPercentDmg();
         }
 
+
+        if (collision.gameObject.CompareTag("20%damage"))
+        {
+            twentyPercentDmg();
+        }
+
+        if (collision.gameObject.CompareTag("Death"))
+        {
+            health = 0;
+            TakeDamage();
+        }
     }
 
     private void Die()
     {
-        anim.SetTrigger("Die");
+       /* anim.SetTrigger("death");
+        deathSoundEffect.Play();*/
         rb.bodyType = RigidbodyType2D.Static;
-       // deathSoundEffect.Play();
+        Debug.Log("Death");
+        RestartLevel();
+    }
+
+    private void twentyPercentDmg ()
+    {
+        health = health - (int)(maxhealth * 0.2);
+        TakeDamage();
+        Debug.Log("Health: " + health);
     }
 
     private void RestartLevel()
@@ -58,16 +94,34 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    public void HealPlayer(int healing) // need to update method and form an equation to calculate what the players new health should be.
+    public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
-        health += healing;
-        if(health > maxhealth)
+        if((health + amount) > maxhealth)
+        {
             health = maxhealth;
-      //  healthBar.SetHealth(health + healing);
+        } else
+        {
+            health = health + amount;
+        }
+
+
+        healthBar.SetHealth(health);
     }
 
     private void SetPlayersMaxHealth() //sets the players max health, can also do in the unity editor.
     {
        // healthBar.SetHealth(maxhealth);
     }
+
+    public int getHealth ()
+    {
+        return this.health;
+    }
+
+    public int getMaxHealth ()
+    {
+        return this.maxhealth;
+    }
+
+
 }
