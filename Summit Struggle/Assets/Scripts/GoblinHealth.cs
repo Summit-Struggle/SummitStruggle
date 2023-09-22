@@ -15,12 +15,13 @@ public class GoblinHealth : MonoBehaviour
     [SerializeField] private GameObject obj;
 
     private SpriteRenderer spriteRend;
-
+    private PlayerLevel playerLevel;
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
         dead = false;
     }
    public void TakeDamage(float _damage)
@@ -38,7 +39,7 @@ public class GoblinHealth : MonoBehaviour
                 anim.SetTrigger("Die");
                 Dead();
 
-
+                playerLevel.XP += 150;
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
                     component.enabled = false;
