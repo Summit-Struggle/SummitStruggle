@@ -600,13 +600,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362057406}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.6, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.23668231, z: -0, w: 0.9715871}
+  m_LocalPosition: {x: 4.24, y: 0, z: -2.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2088164788}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -27.382, z: 0}
 --- !u!1 &455472780
 GameObject:
   m_ObjectHideFlags: 0
@@ -16905,6 +16905,7 @@ MonoBehaviour:
   startingHealth: 10
   components:
   - {fileID: 2088164787}
+  obj: {fileID: 1386744889}
 --- !u!114 &1386744895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25256,7 +25257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 0
   range: 2.88
-  damage: 6
+  damage: 34
   colliderDistance: 0.12
   boxCollider: {fileID: 8480647957926605100}
   enemyLayer:

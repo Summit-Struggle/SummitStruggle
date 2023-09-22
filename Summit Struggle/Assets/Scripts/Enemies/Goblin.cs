@@ -17,7 +17,7 @@ public class MeleeEnemy : MonoBehaviour
 
     //References
     private Animator anim;
-    private PlayerLife playerHealth;
+    private Health playerHealth;
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
@@ -46,20 +46,16 @@ public class MeleeEnemy : MonoBehaviour
 
     private bool PlayerInSight()
     {
-        //Creates attack box
         RaycastHit2D hit = 
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
             0, Vector2.left, 0, playerLayer);
 
-        //On hit get the health of object hit (player)
         if (hit.collider != null)
-            playerHealth = hit.transform.GetComponent<PlayerLife>();
+            playerHealth = hit.transform.GetComponent<Health>();
 
         return hit.collider != null;
     }
-
-    //Visual Aid for attack box
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -72,4 +68,6 @@ public class MeleeEnemy : MonoBehaviour
         if (PlayerInSight())
             playerHealth.TakeDamage(damage);
     }
+
+  
 }

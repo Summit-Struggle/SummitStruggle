@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool dead;
 
+    [SerializeField] private GameObject obj;
+
     private SpriteRenderer spriteRend;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        dead = false;
     }
    public void TakeDamage(float _damage)
     {
@@ -26,13 +29,15 @@ public class Health : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            anim.SetTrigger("hurt");
+            anim.SetTrigger("Hurt");
         }
         else
         {
             if (!dead)
             {
                 anim.SetTrigger("Die");
+                Dead();
+
 
                 //Deactivate all attached component classes
                 foreach (Behaviour component in components)
@@ -41,5 +46,10 @@ public class Health : MonoBehaviour
                 dead = true;
             }
         }
+    }
+
+    public void Dead()
+    {
+                Destroy(obj);
     }
 }
