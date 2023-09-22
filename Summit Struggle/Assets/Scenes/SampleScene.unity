@@ -17036,7 +17036,7 @@ GameObject:
   - component: {fileID: 1080434212}
   m_Layer: 0
   m_Name: SpikePit
-  m_TagString: Untagged
+  m_TagString: Death
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17124,7 +17124,7 @@ GameObject:
   - component: {fileID: 1226593199}
   m_Layer: 0
   m_Name: Moving saws
-  m_TagString: Trap
+  m_TagString: 20%damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17721,7 +17721,7 @@ GameObject:
   - component: {fileID: 1658984544}
   m_Layer: 5
   m_Name: Heart2
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25898,7 +25898,7 @@ GameObject:
   - component: {fileID: 1993900978}
   m_Layer: 0
   m_Name: Hearts
-  m_TagString: Untagged
+  m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
