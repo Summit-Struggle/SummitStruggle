@@ -80,10 +80,9 @@ public class PlayerLife : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
+    private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
     {
-        health -= damage;
+        //health -= damage;
        // healthBar.SetHealth(health);
         if(health <= 0)
             Die();
@@ -123,5 +122,17 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
+     private void TakeDamage(int dmg) // need to update method and form an equation to calculate what the players new health should be.
+    {
+        health -= dmg;
+        healthBar.SetHealth(health);
+        if(health <= 0)
+            Die();
+        else
+        {
+            anim.SetTrigger("TakeDamage");
+            RestartLevel();
+        }
+    }
 
 }

@@ -17124,7 +17124,7 @@ GameObject:
   - component: {fileID: 1226593199}
   m_Layer: 0
   m_Name: Moving saws
-  m_TagString: Untagged
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25983,8 +25983,8 @@ MonoBehaviour:
   leftEdge: {fileID: 621644219}
   rightEdge: {fileID: 927077220}
   enemy: {fileID: 1386744891}
-  speed: 1
-  idleDuration: 0
+  speed: 1.7
+  idleDuration: 1.1
   anim: {fileID: 1386744892}
 --- !u!4 &2088164788
 Transform:
@@ -26380,7 +26380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a312b6bc35fe9e44fa3465277d06d7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 10
+  maxhealth: 0
   deathSoundEffect: {fileID: 0}
   healthBar: {fileID: 0}
   components: []
