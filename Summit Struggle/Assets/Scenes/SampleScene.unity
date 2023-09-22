@@ -26075,6 +26075,7 @@ GameObject:
   - component: {fileID: 8766232173808245645}
   - component: {fileID: 8766232173808245646}
   - component: {fileID: 8766232173808245647}
+  - component: {fileID: 8766232173808245648}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -26395,6 +26396,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cherriesText: {fileID: 0}
   collectionSoundEffect: {fileID: 0}
+--- !u!114 &8766232173808245648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045178613663666063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6497756a44c492c47b2f222966d0159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 0
+  range: 0.97
+  damage: 0
+  colliderDistance: 0.27
+  boxCollider: {fileID: 8480647957926605100}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
