@@ -17023,7 +17023,7 @@ GameObject:
   - component: {fileID: 1121653956}
   - component: {fileID: 1121653960}
   - component: {fileID: 1121653958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Goblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26415,7 +26415,7 @@ MonoBehaviour:
   boxCollider: {fileID: 8480647957926605100}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
