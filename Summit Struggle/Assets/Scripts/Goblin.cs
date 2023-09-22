@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class Goblin : MonoBehaviour
 {
     [Header ("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -17,7 +19,7 @@ public class MeleeEnemy : MonoBehaviour
 
     //References
     private Animator anim;
-    private GoblinHealth playerHealth;
+    private PlayerLife playerHealth;
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
@@ -52,7 +54,7 @@ public class MeleeEnemy : MonoBehaviour
             0, Vector2.left, 0, playerLayer);
 
         if (hit.collider != null)
-            playerHealth = hit.transform.GetComponent<Health>();
+            playerHealth = hit.transform.GetComponent<PlayerLife>();
 
         return hit.collider != null;
     }
@@ -71,3 +73,4 @@ public class MeleeEnemy : MonoBehaviour
 
   
 }
+
