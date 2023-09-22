@@ -17023,6 +17023,7 @@ GameObject:
   - component: {fileID: 1121653956}
   - component: {fileID: 1121653960}
   - component: {fileID: 1121653958}
+  - component: {fileID: 1121653961}
   m_Layer: 9
   m_Name: Goblin
   m_TagString: Untagged
@@ -17183,6 +17184,21 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1121653961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121653954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55da867d39b1539428cc3ca51c4d9170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 0
+  components: []
+  obj: {fileID: 0}
 --- !u!1 &1161036567
 GameObject:
   m_ObjectHideFlags: 0
@@ -17623,7 +17639,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464077376}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rightEdge
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -17655,7 +17671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1485383557}
   - component: {fileID: 1485383558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoblinPatrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25639,7 +25655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1843671606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leftEdge
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -26408,10 +26424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6497756a44c492c47b2f222966d0159b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0
-  range: 0.97
-  damage: 0
-  colliderDistance: 0.27
+  attackCooldown: 0.06
+  range: 1.73
+  damage: 93
+  colliderDistance: 0.21
   boxCollider: {fileID: 8480647957926605100}
   enemyLayer:
     serializedVersion: 2
