@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    private int health;
+    [SerializeField] private int health;
     private int maxhealth;
 
     private Animator anim;
     private Rigidbody2D rb;
 
-    [SerializeField] private AudioSource deathSoundEffect;
+    // [SerializeField] private AudioSource deathSoundEffect;
     [SerializeField] HealthBar healthBar;
 
 
@@ -67,11 +67,10 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
-        anim.SetTrigger("death");
-        deathSoundEffect.Play();
+        anim.SetTrigger("Die");
+        // deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         Debug.Log("Death");
-        RestartLevel();
     }
 
     private void twentyPercentDmg ()
@@ -127,5 +126,9 @@ public class PlayerLife : MonoBehaviour
     public int getMaxHealth ()
     {
         return this.maxhealth;
+    }
+
+    public void resetartLevel() {
+        RestartLevel();
     }
 }

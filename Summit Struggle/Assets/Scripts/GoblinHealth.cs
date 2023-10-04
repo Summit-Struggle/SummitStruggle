@@ -35,8 +35,7 @@ public class GoblinHealth : MonoBehaviour
         }
         else
         {
-                // Deactivate all attached component classes
-              
+               //Start death animation
                 playerLevel.XP += 150;
                 anim.SetTrigger("die");
         }
