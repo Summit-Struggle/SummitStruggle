@@ -31,14 +31,14 @@ public class GoblinHealth : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            anim.SetTrigger("Hurt");
+            anim.SetTrigger("hurt");
         }
         else
         {
             if (!dead)
             {
-                anim.SetTrigger("Die");
-                Dead();
+                anim.SetTrigger("die");
+                // Dead();
 
                 playerLevel.XP += 150;
 

@@ -17135,7 +17135,7 @@ MonoBehaviour:
   boxCollider: {fileID: 1121653958}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &1121653961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17148,9 +17148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55da867d39b1539428cc3ca51c4d9170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 10
   components: []
-  obj: {fileID: 0}
+  obj: {fileID: 1121653954}
 --- !u!1 &1161036567
 GameObject:
   m_ObjectHideFlags: 0
@@ -26592,7 +26592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 0.06
   range: 1.73
-  damage: 93
+  damage: 5
   colliderDistance: 0.21
   boxCollider: {fileID: 8480647957926605100}
   enemyLayer:
