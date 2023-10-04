@@ -35,18 +35,18 @@ public class Goblin : MonoBehaviour
         //Attack only when player in sight?
         if (PlayerInSight())
         {
-            if (cooldownTimer >= attackCooldown)
-            {
+            // if (cooldownTimer >= attackCooldown)
+            // {
                 cooldownTimer = 0;
                 anim.SetTrigger("MeleeAttack");
-            }
+            // }
         }
 
         if (enemyPatrol != null)
             enemyPatrol.enabled = !PlayerInSight();
     }
 
-    private bool PlayerInSight()
+       private bool PlayerInSight()
     {
         RaycastHit2D hit = 
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
