@@ -17128,9 +17128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f61f2425f449734690bc8020e30e47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0
+  attackCooldown: 5.06
   range: 1
-  damage: 5
+  damage: 16
   colliderDistance: 0.25
   boxCollider: {fileID: 1121653958}
   playerLayer:
@@ -26591,13 +26591,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 0.06
-  range: 1.73
-  damage: 5
-  colliderDistance: 0.21
+  range: 0.81
+  damage: 12
+  colliderDistance: 0.33
   boxCollider: {fileID: 8480647957926605100}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
 --- !u!114 &8766232173808245649
 MonoBehaviour:
   m_ObjectHideFlags: 0

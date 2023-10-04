@@ -35,11 +35,11 @@ public class Goblin : MonoBehaviour
         //Attack only when player in sight?
         if (PlayerInSight())
         {
-            // if (cooldownTimer >= attackCooldown)
-            // {
+            if (cooldownTimer >= attackCooldown)
+            {
                 cooldownTimer = 0;
                 anim.SetTrigger("MeleeAttack");
-            // }
+            }
         }
 
         if (enemyPatrol != null)

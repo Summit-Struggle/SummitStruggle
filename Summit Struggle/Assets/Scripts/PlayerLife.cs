@@ -7,11 +7,21 @@ public class PlayerLife : MonoBehaviour
 {
     private int health;
     private int maxhealth;
+
     private Animator anim;
     private Rigidbody2D rb;
 
     [SerializeField] private AudioSource deathSoundEffect;
     [SerializeField] HealthBar healthBar;
+
+
+    [Header("iFrames")]
+    [SerializeField] private float iFramesDuration;
+    [SerializeField] private int numberOfFlashes;
+    private SpriteRenderer spriteRend;
+    [Header("Components")]
+    [SerializeField] private Behaviour[] components;
+    private bool invulnerable;
 
     
     private void Start()
@@ -51,15 +61,14 @@ public class PlayerLife : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Death"))
         {
-            health = 0;
-            TakeDamage();
+            TakeDamage(maxhealth);
         }
     }
 
     private void Die()
     {
-       /* anim.SetTrigger("death");
-        deathSoundEffect.Play();*/
+        anim.SetTrigger("death");
+        deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         Debug.Log("Death");
         RestartLevel();
@@ -67,8 +76,7 @@ public class PlayerLife : MonoBehaviour
 
     private void twentyPercentDmg ()
     {
-        health = health - (int)(maxhealth * 0.2);
-        TakeDamage();
+        TakeDamage((int)(maxhealth * 0.2));
         Debug.Log("Health: " + health);
     }
 
@@ -76,21 +84,19 @@ public class PlayerLife : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    private void TakeDamage() // need to update method and form an equation to calculate what the players new health should be.
-    {
-        healthBar.SetHealth(health);
-    }
 
     //Separate damage for goblin attack
     public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
     {
         health -= damage;
+        anim.SetTrigger("TakeDamage");
         if(health <= 0)
         {
             Die();
         }
         else
         {
+            StartCoroutine(Invunerability());
             healthBar.SetHealth(health);
         }
     }
@@ -124,5 +130,19 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
+     private IEnumerator Invunerability()
+    {
+        invulnerable = true;
+        Physics2D.IgnoreLayerCollision(10, 11, true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes * 2));
+        }
+        Physics2D.IgnoreLayerCollision(10, 11, false);
+        invulnerable = false;
+    }
 
 }
