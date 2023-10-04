@@ -5,7 +5,7 @@ public class GoblinHealth : MonoBehaviour
 {
     [Header ("Health")]
     [SerializeField] private float startingHealth;
-    public float currentHealth { get; private set; }
+    [SerializeField] private float currentHealth;
     private Animator anim;
 
     [Header("Components")]
@@ -35,24 +35,18 @@ public class GoblinHealth : MonoBehaviour
         }
         else
         {
-            if (!dead)
-            {
-                anim.SetTrigger("die");
-                // Dead();
-
+                // Deactivate all attached component classes
+              
                 playerLevel.XP += 150;
-
-                //Deactivate all attached component classes
-                foreach (Behaviour component in components)
-                    component.enabled = false;
-
-                dead = true;
-            }
+                anim.SetTrigger("die");
         }
     }
 
-    public void Dead()
-    {
-                Destroy(obj);
+   
+    public void Destroy(){
+          foreach (Behaviour component in components){ 
+                    component.enabled = false;
+                    }
+         Destroy(obj);
     }
 }
