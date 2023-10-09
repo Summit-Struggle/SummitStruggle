@@ -10,8 +10,6 @@ public class GoblinHealth : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
-    private bool dead;
-
     [SerializeField] private GameObject obj;
 
     private SpriteRenderer spriteRend;
@@ -23,7 +21,6 @@ public class GoblinHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
-        dead = false;
     }
    public void TakeDamage(float _damage)
     {

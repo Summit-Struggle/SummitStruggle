@@ -16446,7 +16446,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 11.44
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -16472,7 +16472,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -15}
-  m_LocalScale: {x: 1, y: 1, z: -0.93276}
+  m_LocalScale: {x: 1, y: 1, z: -0.18}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -25663,6 +25663,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3292599972056773951, guid: b44bab1f282ce47419b4dda9251cbc7c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 703.5996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292599972056773951, guid: b44bab1f282ce47419b4dda9251cbc7c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -195.2002
+      objectReference: {fileID: 0}
     - target: {fileID: 3769226488565302196, guid: b44bab1f282ce47419b4dda9251cbc7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 120.74716
@@ -25959,7 +25967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538405997144224224, guid: dcc3b550033cb574897d07b16b294161, type: 3}
       propertyPath: damage
-      value: 116
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 2683726695605854278, guid: dcc3b550033cb574897d07b16b294161, type: 3}
       propertyPath: m_Layer
@@ -26417,6 +26425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a312b6bc35fe9e44fa3465277d06d7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   healthBar: {fileID: 1457348211}
   iFramesDuration: 0.69
   numberOfFlashes: 2

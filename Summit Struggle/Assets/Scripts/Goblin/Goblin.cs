@@ -46,7 +46,7 @@ public class Goblin : MonoBehaviour
             enemyPatrol.enabled = !PlayerInSight();
     }
 
-       private bool PlayerInSight()
+       private bool PlayerInSight() //Checks if the player is in the goblin's attack range -- Values can be changed in unity to increase/decrease range
     {
         RaycastHit2D hit = 
             Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
@@ -58,7 +58,7 @@ public class Goblin : MonoBehaviour
 
         return hit.collider != null;
     }
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() //Visualise the range as red box
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,

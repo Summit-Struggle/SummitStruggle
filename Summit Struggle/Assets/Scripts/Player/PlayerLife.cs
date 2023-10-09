@@ -50,18 +50,18 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trap"))
         {
-            twentyPercentDmg();
+            TwentyPercentDmg();
         }
 
 
         if (collision.gameObject.CompareTag("20%damage"))
         {
-            twentyPercentDmg();
+            TwentyPercentDmg();
         }
 
         if (collision.gameObject.CompareTag("Death"))
         {
-            TakeDamage(maxhealth);
+            Die();
         }
     }
 
@@ -73,7 +73,7 @@ public class PlayerLife : MonoBehaviour
         Debug.Log("Death");
     }
 
-    private void twentyPercentDmg ()
+    private void TwentyPercentDmg ()
     {
         TakeDamage((int)(maxhealth * 0.2));
         Debug.Log("Health: " + health);
@@ -84,8 +84,8 @@ public class PlayerLife : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //Separate damage for goblin attack
-    public void TakeDamage(int damage) // need to update method and form an equation to calculate what the players new health should be.
+  
+    public void TakeDamage(int damage) // subtracts damage from current health
     {
         anim.SetTrigger("TakeDamage");
         health -= damage;
@@ -128,7 +128,4 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
-    public void resetartLevel() {
-        RestartLevel();
-    }
 }
