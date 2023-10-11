@@ -43,7 +43,9 @@ public class PauseMenuUI : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quitting game..");
-        Application.Quit();
+        SceneManager.LoadSceneAsync(0);
+
+        // Application.Quit();
     }
 
 }
