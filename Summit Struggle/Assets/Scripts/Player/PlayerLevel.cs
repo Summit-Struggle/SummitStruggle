@@ -30,4 +30,9 @@ public class PlayerLevel : MonoBehaviour
         Debug.Log("Level: " + level + " XP: " + XP);
     }
 
+    public int getXp ()
+    {
+        return (int)XP;
+    }
+
 }
