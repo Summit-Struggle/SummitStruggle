@@ -26390,7 +26390,8 @@ MonoBehaviour:
   jumpForce: 14
   jumpableGround:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  keybindUI: {fileID: 0}
   jumpSoundEffect: {fileID: 0}
 --- !u!95 &8766232173808245645
 Animator:

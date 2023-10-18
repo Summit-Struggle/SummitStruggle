@@ -15,49 +15,62 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask jumpableGround;
     private bool doubleJump;
 
+    public KeybindUI keybindUI;
+
     // private enum MovementState { idle, running, jumping, falling }
 
     [SerializeField] private AudioSource jumpSoundEffect;
-    
 
 
+
+    // Start is called before the first frame update
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();    
-        coll = GetComponent<BoxCollider2D>();   
+        sprite = GetComponent<SpriteRenderer>();
+        coll = GetComponent<BoxCollider2D>();
+
+        // Ensure you have a reference to the KeybindUI script
+        keybindUI = FindObjectOfType<KeybindUI>();
+        if (keybindUI == null)
+        {
+            Debug.LogError("KeybindUI not found. Make sure it's in the scene.");
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
+        //dirX = Input.GetAxisRaw("Horizontal");
+        //rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+        dirX = 0f;
+
+        // Use custom key bindings for right and left movements
+        if (Input.GetKey(keybindUI.GetKeyBinding("Right")))
+        {
+            dirX = 1f;
+        }
+        else if (Input.GetKey(keybindUI.GetKeyBinding("Left")))
+        {
+            dirX = -1f;
+        }
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if (IsGrounded() && !Input.GetKeyDown("space"))
-        {
-            doubleJump = false;
-        }
-
-
-        if (Input.GetKeyDown("space"))
-        {
-            if(IsGrounded() || doubleJump )
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                doubleJump = !doubleJump;
-            }
-        }
-
-        if (Input.GetKeyDown("space") && IsGrounded())
-        {
+        if (Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
+        { 
+    
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             // jumpSoundEffect.Play();
         }
 
-
+        //if (Input.GetKey(keybindUI.GetKeyBinding("Attack")))
+        //{
+            // will be teplace the conditions above with the correct ones based on your attack input
+            // Trigger the player's attack action
+        //}
 
         UpdateAnimation();
         

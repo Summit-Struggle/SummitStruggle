@@ -8,7 +8,7 @@ public class PauseMenuUI : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
-    public GameObject pauseMenuUI;
+    public GameObject PauseMenuCanvas;
 
     private void Update()
     {
@@ -29,14 +29,14 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        PauseMenuCanvas.SetActive(false);
         Time.timeScale = 1.0f; // Set the time scale back to normal to unpause the game
         GameIsPaused = false;
     }
 
     void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        PauseMenuCanvas.SetActive(true);
         Time.timeScale = 0; // Set the time scale to 0 to pause the game
         GameIsPaused = true;
     }
