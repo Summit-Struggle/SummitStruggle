@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System;
 using UnityEngine;
 
 public class SaveLoad : MonoBehaviour
 {
     private string filePathPrimary;
     private string filePathSecondary;
+    private string testPath;
 
     private PlayerLife playerLife;
     private PlayerLevel playerLevel;
@@ -20,8 +22,8 @@ public class SaveLoad : MonoBehaviour
 
 
         //file paths to both save files
-        filePathPrimary = Path.Combine(Application.dataPath, "Files", "saveFilePrimary");
-        filePathSecondary = Path.Combine(Application.dataPath, "Files", "saveFileSecondary");
+        filePathPrimary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFilePrimary.txt");
+        filePathSecondary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFileSecondary.txt");
         //2 save files so that the user can delete their current save and revert back to the previous.
     }
 
@@ -37,6 +39,7 @@ public class SaveLoad : MonoBehaviour
         //when L is pressed down, save the game here.
         if (Input.GetKeyDown(KeyCode.I))
         {
+            Debug.Log("P1: " + filePathPrimary + "\nP2: " + filePathSecondary);
             saveGame();
         }
 
@@ -54,6 +57,7 @@ public class SaveLoad : MonoBehaviour
         {
             //creates save file
             createSaveFile(filePathPrimary);
+            Debug.Log("Created primary file");
             return;
 
         } // if there is already a save.
@@ -63,19 +67,49 @@ public class SaveLoad : MonoBehaviour
         {
             //deleted old save
             File.Delete(filePathSecondary);
+            Debug.Log("Deleted old file");
         }
 
         //sets current save to old save
         File.Move(filePathPrimary, filePathSecondary);
+        Debug.Log("Moved old file to old pos");
 
         //creates a new file at the filepath
         createSaveFile(filePathPrimary);
+        Debug.Log("Created new primary file");
 
     }
 
     private void createSaveFile(string filePath)
     {
+        //the players position at the time.
+        string position = t.position.x + " " + t.position.y + " " + t.position.z;
 
+        //the players health
+        string health = playerLife.getHealth() + "";
+
+        //the players xp
+        string xp = playerLevel.getXp() + "";
+
+        string saveContents = position + "\n" + health + "\n" + xp;
+        Debug.Log("In create save file");
+        Debug.Log("filepath: " + filePath);
+        Debug.Log("Save contents: " + saveContents);
+
+        if (!File.Exists(filePath))
+        {
+            Debug.Log("File doesn't exists");
+        }
+
+        try
+        {
+            File.WriteAllText(filePath, saveContents);
+            Debug.Log("Save Successful");
+        }
+        catch (DirectoryNotFoundException e)
+        {
+            Debug.Log("Directory not found: " + e);
+        }
     }
 
 
@@ -104,16 +138,7 @@ public class SaveLoad : MonoBehaviour
 
     private void LoadSave(string filePAth)
     {
-        //the players position at the time.
-        string position = t.position.x + " " + t.position.y + " " + t.position.z;
 
-        //the players health
-        string health = playerLife.getHealth() + "";
-
-        //the players xp
-        string xp = playerLevel.getXp() + "";
-
-        string saveContents = position + "\n" + health + "\n" + xp;
 
 
 
