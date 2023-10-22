@@ -22,7 +22,8 @@ public class LevelingBenefits : MonoBehaviour
         }
 
         level.text = "Level: " + playerLevel.level;
-        
+
+        BenefitCalculation();
     }
 
     private void ToggleHeaderVisibility()
@@ -33,9 +34,9 @@ public class LevelingBenefits : MonoBehaviour
 
     private void BenefitCalculation()
     {
-        int roundedLevel = Mathf.CeilToInt(playerLevel.level); // Round up the level so its calculating the rewards for the next level
+        int roundedLevel = Mathf.CeilToInt(playerLevel.level); // Rounds up the level so its calculating the rewards for the next level
         float coins = 5 * roundedLevel;
-        rewards.text = "Rewards for next level are: " + coins + "coins";
+        rewards.text = "Rewards for next level are: " + coins + " coins";
     }
 }
 
