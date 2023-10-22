@@ -62,32 +62,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
         {
-
-            //=======
-            dirX = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-            if (IsGrounded() && !Input.GetKeyDown("space"))
+            // Check if the player is grounded (can perform a regular jump) or has a double jump available
+            if (IsGrounded() || !doubleJump)
             {
-                doubleJump = false;
-            }
+                // Perform a jump
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
-
-            if (Input.GetKeyDown("space"))
-            {
-                if (IsGrounded() || doubleJump)
+                // If not grounded (double jump), set the doubleJump flag
+                if (!IsGrounded())
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    doubleJump = !doubleJump;
+                    doubleJump = true;
                 }
             }
 
-            if (Input.GetKeyDown("space") && IsGrounded())
-            {
-                //>>>>>>> main:Summit Struggle/Assets/Scripts/Player/PlayerMovement.cs
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                // jumpSoundEffect.Play();
-            }
 
             //if (Input.GetKey(keybindUI.GetKeyBinding("Attack")))
             //{
@@ -109,34 +96,34 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
             sprite.flipX = false;
-             if (rb.velocity.y > .01f)
-             { 
-            anim.SetBool("Jumping", true);
-            anim.SetBool("Running", false);
-           
-             }
-          else if (rb.velocity.y < -.1f)
+            if (rb.velocity.y > .01f)
             {
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Falling", true);
-             }
+                anim.SetBool("Jumping", true);
+                anim.SetBool("Running", false);
+
+            }
+            else if (rb.velocity.y < -.1f)
+            {
+                anim.SetBool("Jumping", false);
+                anim.SetBool("Falling", true);
+            }
         }
         else if (dirX < 0f)
         {
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
             sprite.flipX = true;
-               if (rb.velocity.y > .01f)
-        {
-            anim.SetBool("Jumping", true);
-            anim.SetBool("Running", false);
-        }
-          else if (rb.velocity.y < -.1f)
-        {
-            anim.SetBool("Running", false);
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Falling", true);
-        }
+            if (rb.velocity.y > .01f)
+            {
+                anim.SetBool("Jumping", true);
+                anim.SetBool("Running", false);
+            }
+            else if (rb.velocity.y < -.1f)
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("Jumping", false);
+                anim.SetBool("Falling", true);
+            }
         }
         else
         {
@@ -157,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-           anim.SetBool("Falling", false); 
+            anim.SetBool("Falling", false);
         }
 
         // anim.SetInteger("state", (int)state);
@@ -166,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        doubleJump = false;
     }
 
 }
