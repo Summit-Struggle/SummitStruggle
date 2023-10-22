@@ -43,9 +43,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //<<<<<<< HEAD:Summit Struggle/Assets/Scripts/PlayerMovement.cs
-        //dirX = Input.GetAxisRaw("Horizontal");
-        //rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         dirX = 0f;
 
@@ -67,13 +64,13 @@ public class PlayerMovement : MonoBehaviour
             dirX = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-            if (IsGrounded() && !Input.GetKeyDown("space"))
+            if (IsGrounded() && !Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
             {
                 doubleJump = false;
             }
 
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
             {
                 if (IsGrounded() || doubleJump)
                 {
@@ -82,12 +79,11 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown("space") && IsGrounded())
-            {
-                //>>>>>>> main:Summit Struggle/Assets/Scripts/Player/PlayerMovement.cs
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                // jumpSoundEffect.Play();
-            }
+            // if (Input.GetKeyDown("space") && IsGrounded())
+            // {
+            //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //     // jumpSoundEffect.Play();
+            // }
 
             //if (Input.GetKey(keybindUI.GetKeyBinding("Attack")))
             //{
