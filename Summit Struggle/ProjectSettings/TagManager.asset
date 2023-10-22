@@ -9,6 +9,7 @@ TagManager:
   - 20%damage
   - Heart
   - Death
+  - LevelBackground
   layers:
   - Default
   - TransparentFX
