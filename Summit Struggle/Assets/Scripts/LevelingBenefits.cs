@@ -12,6 +12,7 @@ public class LevelingBenefits : MonoBehaviour
     private void Awake()
     {
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>(); //initializes the PlayerLevel to make sure its correct
+        Header.SetActive(false); //makes the benefits level UI not showing when the game starts
     }
     public GameObject Header;
     void Update()
