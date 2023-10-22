@@ -45,4 +45,14 @@ public class GoblinHealth : MonoBehaviour
                     }
          Destroy(obj);
     }
+
+    public float getCurrentHealthForSave ()
+    {
+        return currentHealth;
+    }
+
+    public void setCurrentHealthForSave (float amount)
+    {
+        currentHealth = amount;
+    }
 }
