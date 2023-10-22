@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
         {
+            //<<<<<<< Updated upstream
             // Check if the player is grounded (can perform a regular jump) or has a double jump available
             if (IsGrounded() || !doubleJump)
             {
@@ -82,10 +83,47 @@ public class PlayerMovement : MonoBehaviour
             // Trigger the player's attack action
             //}
 
-            UpdateAnimation();
 
+            //=======
+
+            //=======
+            //dirX = Input.GetAxisRaw("Horizontal");
+            //rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+
+            //if (IsGrounded() && !Input.GetKeyDown("Jump"))
+            //{
+            doubleJump = false;
+            //}
+
+
+            //if (Input.GetKeyDown("Jump"))
+            //{
+            if (IsGrounded() || doubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                doubleJump = !doubleJump;
+            }
+            //}
+
+            // if (Input.GetKeyDown("Jump") && IsGrounded())
+            //{
+            //>>>>>>> main:Summit Struggle/Assets/Scripts/Player/PlayerMovement.cs
+            //   rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            // jumpSoundEffect.Play();
+            // }
+
+            //if (Input.GetKey(keybindUI.GetKeyBinding("Attack")))
+            //{
+            // will be teplace the conditions above with the correct ones based on your attack input
+            // Trigger the player's attack action
+            //}
+
+            UpdateAnimation();
         }
     }
+
+//>>>>>>> Stashed changes
+    
 
     private void UpdateAnimation()
     {
