@@ -17,11 +17,13 @@ public class SaveLoad : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        //gets the other needed scripts to access player data needed for saves
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
 
 
-        //file paths to both save files
+        //file paths to both save files. Dynamic paths, so they will work when parents folders are moved
+        //very delicate, don't change if possible.
         filePathPrimary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFilePrimary.txt");
         filePathSecondary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFileSecondary.txt");
         //2 save files so that the user can delete their current save and revert back to the previous.
@@ -30,23 +32,22 @@ public class SaveLoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //when k is pressed load the previous save
+        //when U is pressed load the previous save
         if (Input.GetKeyDown(KeyCode.U))
         {
             LoadSave();
         }
 
-        //when L is pressed down, save the game here.
+        //when I is pressed down, save the game here.
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("P1: " + filePathPrimary + "\nP2: " + filePathSecondary);
             saveGame();
         }
 
-        //when j is pressed down, the last save is deleted
+        //when O is pressed down, the last save is deleted
         if (Input.GetKeyDown(KeyCode.O))
         {
-
+            deleteLastSave();
         }
     }
 
@@ -57,7 +58,7 @@ public class SaveLoad : MonoBehaviour
         {
             //creates save file
             createSaveFile(filePathPrimary);
-            Debug.Log("Created primary file");
+            //Debug.Log("Created primary file");
             return;
 
         } // if there is already a save.
@@ -67,16 +68,16 @@ public class SaveLoad : MonoBehaviour
         {
             //deleted old save
             File.Delete(filePathSecondary);
-            Debug.Log("Deleted old file");
+            //Debug.Log("Deleted old file");
         }
 
         //sets current save to old save
         File.Move(filePathPrimary, filePathSecondary);
-        Debug.Log("Moved old file to old pos");
+        //Debug.Log("Moved old file to old pos");
 
         //creates a new file at the filepath
         createSaveFile(filePathPrimary);
-        Debug.Log("Created new primary file");
+        //Debug.Log("Created new primary file");
 
     }
 
@@ -92,15 +93,8 @@ public class SaveLoad : MonoBehaviour
         string xp = playerLevel.getXp() + "";
 
         string saveContents = position + "\n" + health + "\n" + xp;
-        Debug.Log("In create save file");
-        Debug.Log("filepath: " + filePath);
-        Debug.Log("Save contents: " + saveContents);
 
-        if (!File.Exists(filePath))
-        {
-            Debug.Log("File doesn't exists");
-        }
-
+        //writes the save information onto a txt file.
         try
         {
             File.WriteAllText(filePath, saveContents);
@@ -122,28 +116,60 @@ public class SaveLoad : MonoBehaviour
         if (File.Exists(filePathPrimary))
         {
             tempFilePath = filePathPrimary;
+            Debug.Log("Primary load path found");
         }
         else if (File.Exists(filePathSecondary))
         {
             tempFilePath = filePathSecondary;
+            Debug.Log("Secondary load path found");
         }
         else
         {
             //if no saves are avalible, does nothing.
+            Debug.Log("No load path found");
             return;
         }
 
         LoadSave(tempFilePath);
     }
 
-    private void LoadSave(string filePAth)
+    private void LoadSave(string filePath)
     {
+        string[] saveFileLines;
 
+        //gets the lines from the save file
+        try
+        {
+            saveFileLines = File.ReadAllLines(filePath);
+        } catch (DirectoryNotFoundException e)
+        {
+            Debug.Log("Directory not found: " + e);
+            return;
+        }
 
+        string[] pos = saveFileLines[0].Split(" ");
 
+        
+        //sets the players pos to the saved pos
+        t.position = new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), t.position.z);
 
+        //sets the players health from saved health
+        playerLife.setHealthFromSave(int.Parse(saveFileLines[1]));
 
+        //sets the players xp from saved xp
+        playerLevel.SetXP(float.Parse(saveFileLines[2]));
+    }
 
+    public void deleteLastSave ()
+    {
+        //delets first save if it exists
+        if(File.Exists(filePathPrimary))
+        {
+            File.Delete(filePathPrimary);
+        } else //otherwise deletes second save.
+        {
+            File.Delete(filePathSecondary);
+        }
     }
 
 

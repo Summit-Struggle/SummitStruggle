@@ -35,4 +35,9 @@ public class PlayerLevel : MonoBehaviour
         return (int)XP;
     }
 
+    public void SetXP (float xp)
+    {
+        XP = xp;
+    }
+
 }
