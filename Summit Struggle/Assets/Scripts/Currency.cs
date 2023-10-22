@@ -15,6 +15,7 @@ public class Currency : MonoBehaviour
     {
         numOfCoins = 0;
         SetCurrency();
+        Debug.Log("Starting Currency: " + numOfCoins);
     }
 
     public int getCoins() { 
@@ -29,15 +30,19 @@ public class Currency : MonoBehaviour
     private void SetCurrency() { 
         string currencyText = numOfCoins.ToString();
         currency.text = currencyText;
+        Debug.Log("Currency: " + numOfCoins);
     }
 
-   public void gainCoins(int amount) {
+   public int gainCoins(int amount) {
         numOfCoins += amount;
         SetCurrency();
+        Debug.Log("Adding coins");
+        return numOfCoins;
     }
 
       public void loseCoins(int amount) {
         numOfCoins -= amount;
+        Debug.Log("Removing coins");
         SetCurrency();
     }
 

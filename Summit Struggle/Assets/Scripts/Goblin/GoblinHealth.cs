@@ -14,7 +14,7 @@ public class GoblinHealth : MonoBehaviour
 
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
-    private Currency currency;
+   [SerializeField] private Currency currency;
     private bool isDead;
 
     private void Awake()
@@ -24,7 +24,6 @@ public class GoblinHealth : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
         isDead = false;
-        currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
     }
    public void TakeDamage(float _damage)
     {
