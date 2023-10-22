@@ -14,6 +14,8 @@ public class GoblinHealth : MonoBehaviour
 
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
+    private Currency currency;
+    private bool isDead;
 
     private void Awake()
     {
@@ -21,6 +23,8 @@ public class GoblinHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
+        isDead = false;
+        currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
     }
    public void TakeDamage(float _damage)
     {
@@ -34,7 +38,10 @@ public class GoblinHealth : MonoBehaviour
         {
                //Start death animation
                 playerLevel.XP += 150;
+                isDead = true;
                 anim.SetTrigger("die");
+                currency.gainCoins(20);
+
         }
     }
 

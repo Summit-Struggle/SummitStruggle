@@ -7,29 +7,37 @@ using UnityEngine.UI;
 public class Currency : MonoBehaviour
 {
     //set initial currency
-    private int currency;
-    [SerializeField] private Text coins;
+    private int numOfCoins;
+    [SerializeField] private Text currency;
 
     // Start is called before the first frame update
     void Start()
     {
-        currency = 0;
-    }
-
-
-    //update UI
-    private void SetCurrency() { 
-        string currencyText = currency.ToString();
-        coins.text = currencyText;
-    }
-
-   private void gainCoins(int amount) {
-        currency += amount;
+        numOfCoins = 0;
         SetCurrency();
     }
 
-      private void loseCoins(int amount) {
-        currency -= amount;
+    public int getCoins() { 
+        return numOfCoins;
+    }
+
+    public string getCurrency() {
+        return currency.ToString();
+    }
+
+    //update UI
+    private void SetCurrency() { 
+        string currencyText = numOfCoins.ToString();
+        currency.text = currencyText;
+    }
+
+   public void gainCoins(int amount) {
+        numOfCoins += amount;
+        SetCurrency();
+    }
+
+      public void loseCoins(int amount) {
+        numOfCoins -= amount;
         SetCurrency();
     }
 
