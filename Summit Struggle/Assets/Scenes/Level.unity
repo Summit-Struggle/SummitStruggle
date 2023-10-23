@@ -9632,7 +9632,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 471289490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8766232173808245646}
+        m_TargetAssemblyTypeName: PlayerLife, NewAssembly
+        m_MethodName: HealPlayer
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 25
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &471289490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17925,8 +17937,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1912830197}
   - {fileID: 4575664964250811321}
+  - {fileID: 1912830197}
   m_Father: {fileID: 114365215}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18359,9 +18371,10 @@ GameObject:
   m_Component:
   - component: {fileID: 774992597}
   - component: {fileID: 774992598}
+  - component: {fileID: 774992599}
   m_Layer: 5
-  m_Name: Slot (2)
-  m_TagString: Untagged
+  m_Name: IncreaseAttack
+  m_TagString: ShopAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18402,6 +18415,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3f6139dbf2a0e49883f7b75268322c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &774992599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774992596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: {fileID: 756965031}
+  itemName: {fileID: 303739564}
+  itemPrice: {fileID: 1702202590}
+  healing: 0
 --- !u!1 &792175500
 GameObject:
   m_ObjectHideFlags: 0
@@ -19181,7 +19210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.015, y: -0.016022}
+  m_AnchoredPosition: {x: 0.015, y: -0.126}
   m_SizeDelta: {x: 0.17, y: 0.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065613139
@@ -19769,10 +19798,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1265817673}
-  - component: {fileID: 1265817674}
+  - component: {fileID: 1265817675}
   m_Layer: 5
   m_Name: HealthSlot
-  m_TagString: Untagged
+  m_TagString: ShopHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19801,7 +19830,7 @@ RectTransform:
   m_AnchoredPosition: {x: 226, y: -220}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1265817674
+--- !u!114 &1265817675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19810,9 +19839,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265817672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3f6139dbf2a0e49883f7b75268322c, type: 3}
+  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currency: {fileID: 756965031}
+  itemName: {fileID: 408111863}
+  itemPrice: {fileID: 1763325821}
+  healing: 0
 --- !u!4 &1271929235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063296669699230575, guid: 4f06f109d8daaa341ab7cdf9ca6122a3, type: 3}
@@ -20432,7 +20465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465, y: 241}
+  m_AnchoredPosition: {x: 378, y: 213.5055}
   m_SizeDelta: {x: 122.5749, y: 20.8146}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1457348210
@@ -20945,7 +20978,7 @@ RectTransform:
   m_GameObject: {fileID: 1628834949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.025, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1767058838}
@@ -20953,8 +20986,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 383, y: -379}
-  m_SizeDelta: {x: 101.6099, y: 45.6647}
+  m_AnchoredPosition: {x: 383.52197, y: -367}
+  m_SizeDelta: {x: 100.5659, y: 30.0041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628834951
 MonoBehaviour:
@@ -21000,7 +21033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 619178685}
+      - m_Target: {fileID: 1912830196}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -30238,7 +30271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.514, y: -0.016}
+  m_AnchoredPosition: {x: 0.514, y: -0.12597804}
   m_SizeDelta: {x: 203.90515, y: 45.83412}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877486580
@@ -30435,7 +30468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1912830197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30456,8 +30489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 410}
+  m_AnchoredPosition: {x: -0.7933, y: -12.259}
+  m_SizeDelta: {x: 451.5865, y: 385.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912830198
 MonoBehaviour:
@@ -30567,9 +30600,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1939636795}
   - component: {fileID: 1939636796}
+  - component: {fileID: 1939636797}
   m_Layer: 5
-  m_Name: Slot (3)
-  m_TagString: Untagged
+  m_Name: IncreaseMaxHealth
+  m_TagString: ShopMaxHealth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30610,6 +30644,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3f6139dbf2a0e49883f7b75268322c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1939636797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939636794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currency: {fileID: 756965031}
+  itemName: {fileID: 792175502}
+  itemPrice: {fileID: 1389979664}
+  healing: 0
 --- !u!4 &1939753742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063296669699230575, guid: 4f06f109d8daaa341ab7cdf9ca6122a3, type: 3}
@@ -31475,7 +31525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -490, y: 216}
+  m_AnchoredPosition: {x: -418, y: 191}
   m_SizeDelta: {x: 71.0341, y: 71.0341}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &4700116542790511112

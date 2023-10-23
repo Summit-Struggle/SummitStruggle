@@ -118,9 +118,23 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(maxhealth);
     }
 
-    public int getHealth ()
+    //increase max health when upgrade bought in shop
+    private void UpdateMaxHealth(int amount)
+    {
+        maxhealth += amount;
+        //heal for this amount so it matches
+        HealPlayer(amount);
+    } 
+
+    public int GetHealth ()
     {
         return this.health;
+    }
+
+      public void SetCurrentHealth (int amount)
+    {
+        health = amount;
+        healthBar.SetHealth(health);
     }
 
     public int getMaxHealth ()
