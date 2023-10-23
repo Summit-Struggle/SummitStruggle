@@ -128,4 +128,9 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
+    public void ResetGame()
+    {
+        Die();
+    }
+
 }
