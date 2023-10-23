@@ -10,6 +10,8 @@ TagManager:
   - Heart
   - Death
   - LevelBackground
+  - Currency
+  - CoinText
   layers:
   - Default
   - TransparentFX
