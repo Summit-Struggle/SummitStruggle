@@ -18928,7 +18928,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &708538486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19458,9 +19458,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 774992596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
+  m_Script: {fileID: 11500000, guid: 563fe4caba514674ab56f47598c7c155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messagePrompt: {fileID: 1800188755}
+  itemName: {fileID: 303739564}
+  itemPrice: {fileID: 1702202590}
 --- !u!1 &792175500
 GameObject:
   m_ObjectHideFlags: 0
@@ -21414,9 +21417,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265817672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ef8c67870b2f0b4d8668386b2130030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currency: {fileID: 756965031}
+  playerLife: {fileID: 8766232173808245646}
+  messagePrompt: {fileID: 1800188755}
+  itemName: {fileID: 408111863}
+  itemPrice: {fileID: 1763325821}
+  healing: 20
 --- !u!1 &1269588831
 GameObject:
   m_ObjectHideFlags: 0
@@ -32783,7 +32792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1912830197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32970,9 +32979,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1939636794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d93eca04a3a4b4a45ad9f36ad3cf4a78, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b184c26d75fd8a4b908ac41cf0e38d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  messagePrompt: {fileID: 1800188755}
+  itemName: {fileID: 792175502}
+  itemPrice: {fileID: 1389979664}
 --- !u!4 &1939753742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063296669699230575, guid: 4f06f109d8daaa341ab7cdf9ca6122a3, type: 3}
