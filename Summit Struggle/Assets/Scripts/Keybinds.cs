@@ -40,14 +40,14 @@ public class KeybindUI : MonoBehaviour
         keys.Add("Left", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Left", "LeftArrow")));
 //>>>>>>> main
         keys.Add("Jump", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Jump", "Space")));
-        keys.Add("Attack", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Attack", "Left-click")));
+        //keys.Add("Attack", (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("Attack", "Left-click")));
 
 
 
         right.text = keys["Right"].ToString();
         left.text = keys["Left"].ToString();
         jump.text = keys["Jump"].ToString();
-        attack.text = keys["Attack"].ToString();
+        //attack.text = keys["Attack"].ToString();
     }
 
     // Update is called once per frame
@@ -68,11 +68,11 @@ public class KeybindUI : MonoBehaviour
             // Do a move action
             Debug.Log("Jump");
         }
-        if (Input.GetKeyDown(keys["Attack"]))
-        {
-            // Do a move action
-            Debug.Log("Attack");
-        }
+        //if (Input.GetKeyDown(keys["Attack"]))
+        //{
+         //   // Do a move action
+         //   Debug.Log("Attack");
+       // }
     }
 
     void OnGUI()
