@@ -1782,7 +1782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4469c58148bf71d41949338d73de6edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuCanvas: {fileID: 1504565762}
+  PauseMenuCanvas: {fileID: 1379894750}
 --- !u!1 &355826864
 GameObject:
   m_ObjectHideFlags: 0
@@ -20352,7 +20352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4469c58148bf71d41949338d73de6edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenuCanvas: {fileID: 1504565762}
+  PauseMenuCanvas: {fileID: 0}
 --- !u!114 &1163172391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21737,7 +21737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1504565763
 Transform:
   m_ObjectHideFlags: 0
@@ -32635,7 +32635,7 @@ GameObject:
   - component: {fileID: 2142959059}
   - component: {fileID: 2142959058}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
