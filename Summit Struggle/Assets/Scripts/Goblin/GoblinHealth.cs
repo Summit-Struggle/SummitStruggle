@@ -15,7 +15,6 @@ public class GoblinHealth : MonoBehaviour
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
    [SerializeField] private Currency currency;
-    private bool isDead;
 
     private void Awake()
     {
@@ -23,7 +22,6 @@ public class GoblinHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
-        isDead = false;
     }
    public void TakeDamage(float _damage)
     {
@@ -37,10 +35,8 @@ public class GoblinHealth : MonoBehaviour
         {
                //Start death animation
                 playerLevel.XP += 150;
-                isDead = true;
                 anim.SetTrigger("die");
                 currency.gainCoins(20);
-
         }
     }
 
@@ -51,4 +47,36 @@ public class GoblinHealth : MonoBehaviour
                     }
          Destroy(obj);
     }
+
+    //set the parent object's active state
+    public void setActive(bool alive)
+    {
+        if (alive)
+        {
+            obj.SetActive(true);
+        }
+        else
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    //sets dead and active state to false
+    public void setDead()
+    {
+        setActive(false);
+    }
+
+    public float getCurrentHealthForSave()
+    {
+        return currentHealth;
+    }
+
+    public void setCurrentHealthForSave(float amount)
+    {
+        currentHealth = amount;
+    }
+
 }
+
+
