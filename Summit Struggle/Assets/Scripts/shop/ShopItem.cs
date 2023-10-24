@@ -19,7 +19,7 @@ public class ShopItem : MonoBehaviour
      [SerializeField] private int healing = 20;
     public void start()
     {
-          playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
 

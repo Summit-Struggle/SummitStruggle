@@ -35,20 +35,53 @@ public class RestoreHealth : MonoBehaviour
           if(CheckPrice(price))
           {
             currency.LoseCoins(price);
-                HealPlayer();
+             HealPlayer();
           }
+
 
       }
 
-          public int HealPlayer()
+    public void HealPlayer()
     {
         playerLife.HealPlayer(healing);
-        return playerLife.GetHealth();
     }
 
     public bool CheckPrice(int price)
     {
         return  price <= currency.GetCoins();
+    }
+
+      public void SetName(string name){
+        itemName.text = name;
+        Debug.Log("New name: " + name);
+    }
+
+    public void SetPrice(int price){
+        itemPrice.text = price.ToString();
+        Debug.Log("New price: " + price);
+    }
+
+//set coins for testing
+    public void SetCurrency(int amount){
+        currency.SetCoins(amount);
+        Debug.Log("New currency: " + amount);
+    }
+
+    public int GetCurrency()
+    {
+        return currency.GetCoins();
+    }
+
+    public int GetHealth()
+    {
+        return playerLife.GetHealth();
+    }
+
+     public void SetPlayerHealth(int amount)
+    {
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
+        playerLife.SetCurrentHealth(amount);
+        Debug.Log("New player health: " + amount);
     }
 
 }

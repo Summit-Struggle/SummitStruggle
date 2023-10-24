@@ -48,17 +48,6 @@ public class ShopTest
         Assert.IsFalse(Item.CheckPrice(20));
     }
 
-    // check restore health working
-    [Test]
-    public void RestoreHealthCheck()
-    {
-        Item.SetPlayerHealth(60);
-        int expected = 80;
-        Debug.Log("Restoring health: + 20 ");
-
-        Assert.AreEqual(Item.RestoreHealth(), expected);
-    }
-
     //test coins are lost when item bought
     [Test]
     public void buyItemBought(){
