@@ -27,7 +27,17 @@ public class PlayerLevel : MonoBehaviour
     public void Update()
     {
         CalculateLevel();
-        Debug.Log("Level: " + level + " XP: " + XP);
+        // Debug.Log("Level: " + level + " XP: " + XP);
+    }
+
+    public int getXp ()
+    {
+        return (int)XP;
+    }
+
+    public void SetXP (float xp)
+    {
+        XP = xp;
     }
 
 }

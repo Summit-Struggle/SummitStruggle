@@ -9,7 +9,8 @@ TagManager:
   - 20%damage
   - Heart
   - Death
-  - LevelBackground
+  - Currency
+  - CoinText
   layers:
   - Default
   - TransparentFX

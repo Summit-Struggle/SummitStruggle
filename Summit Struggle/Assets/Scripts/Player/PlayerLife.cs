@@ -128,9 +128,9 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
-    public void ResetGame()
+    public void setHealthFromSave (int health)
     {
-        Die();
+        healthBar.SetHealth(health);
     }
 
 }
