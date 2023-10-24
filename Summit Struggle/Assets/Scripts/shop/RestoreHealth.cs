@@ -75,7 +75,7 @@ public class RestoreHealth : MonoBehaviour
 
     public int GetHealth()
     {
-        return playerLife.GetHealth();
+        return playerLife.getHealth();
     }
 
      public void SetPlayerHealth(int amount)

@@ -127,7 +127,7 @@ public class PlayerLife : MonoBehaviour
         HealPlayer(amount);
     } 
 
-    public int GetHealth ()
+    public int getHealth ()
     {
 
         return health;
