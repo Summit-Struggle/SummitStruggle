@@ -66,4 +66,16 @@ public class Currency : MonoBehaviour
         Debug.Log("Removing coins: " + amount);
         SetCurrency();
     }
+
+
+    public int getnumOfCoins ()
+    {
+        return numOfCoins;
+    }
+
+    //can set tests for currency increasing when enemy dies
+
+    //test - when player buys something currency decreases.
+
+    //when level loads the currency should be 0
 }
