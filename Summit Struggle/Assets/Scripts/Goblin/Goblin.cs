@@ -12,7 +12,7 @@ public class Goblin : MonoBehaviour
     [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
-
+    
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
@@ -41,7 +41,6 @@ public class Goblin : MonoBehaviour
                 anim.SetTrigger("MeleeAttack");
             }
         }
-
         if (enemyPatrol != null)
             enemyPatrol.enabled = !PlayerInSight();
     }

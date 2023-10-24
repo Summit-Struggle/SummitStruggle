@@ -9,7 +9,8 @@ TagManager:
   - 20%damage
   - Heart
   - Death
-  - goblin
+  - Currency
+  - CoinText
   layers:
   - Default
   - TransparentFX
