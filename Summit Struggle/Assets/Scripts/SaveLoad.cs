@@ -89,6 +89,20 @@ public class SaveLoad : MonoBehaviour
         }
     }
 
+    public string getfilePathPrimary ()
+    {
+        return filePathPrimary;
+    }
+
+    public Transform getPlayerTransform ()
+    {
+        return playerTrasform;
+    }
+
+    public GameObject[] getGoblins ()
+    {
+        return goblins;
+    }
 
     public void saveGame()
     {
