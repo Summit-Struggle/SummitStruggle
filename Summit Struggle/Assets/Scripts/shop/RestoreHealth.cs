@@ -8,6 +8,7 @@ public class RestoreHealth : MonoBehaviour
     public Currency currency;
 
      public PlayerLife playerLife;
+     public GameObject messagePrompt;
 
 
     //get Shop items
@@ -22,6 +23,7 @@ public class RestoreHealth : MonoBehaviour
     {
        currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();   
+       messagePrompt = GameObject.FindGameObjectWithTag("BuyMessage");
     }
 
     // Update is called once per frame
@@ -36,10 +38,15 @@ public class RestoreHealth : MonoBehaviour
           {
             currency.LoseCoins(price);
              HealPlayer();
+             SendConfirmation();
           }
 
 
       }
+
+    public void SendConfirmation(){
+        messagePrompt.SetActive(true);
+    }
 
     public void HealPlayer()
     {

@@ -10,6 +10,8 @@ public class IncreaseAttack : MonoBehaviour
 
     //get player components
      private PlayerAttack playerAttack;
+     public GameObject messagePrompt;
+
 
        //get Shop items
     [SerializeField] private Text itemName;
@@ -19,6 +21,8 @@ public class IncreaseAttack : MonoBehaviour
     {
         currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
         playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+       messagePrompt = GameObject.FindGameObjectWithTag("BuyMessage");
+
     }
     public void Buy()
     {
@@ -31,9 +35,14 @@ public class IncreaseAttack : MonoBehaviour
           {
             currency.LoseCoins(price);
             Debug.Log(playerAttack.IncreaseAttack(5));
+             SendConfirmation();
 
 
           }
+    }
+
+     public void SendConfirmation(){
+        messagePrompt.SetActive(true);
     }
 
     public bool CheckPrice(int price)

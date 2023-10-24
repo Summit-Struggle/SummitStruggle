@@ -10,6 +10,8 @@ public class IncreaseMaxHealth : MonoBehaviour
 
     //get player components
      private PlayerLife playerLife;
+     public GameObject messagePrompt;
+
 
        //get Shop items
     [SerializeField] private Text itemName;
@@ -17,8 +19,8 @@ public class IncreaseMaxHealth : MonoBehaviour
 
     void Start()
     {
-       playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();   
-
+         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();   
+        messagePrompt = GameObject.FindGameObjectWithTag("BuyMessage");
         currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
     }
     public void Buy()
@@ -33,8 +35,13 @@ public class IncreaseMaxHealth : MonoBehaviour
             currency.LoseCoins(price);
             playerLife.UpdateMaxHealth(10);
             Debug.Log("Current Max Health: " + playerLife.getMaxHealth());
+            SendConfirmation();
 
           }
+    }
+
+     public void SendConfirmation(){
+        messagePrompt.SetActive(true);
     }
 
     public bool CheckPrice(int price)

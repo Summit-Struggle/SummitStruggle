@@ -15,6 +15,7 @@ TagManager:
   - ShopHealth
   - ShopAttack
   - ShopMaxHealth
+  - BuyMessage
   layers:
   - Default
   - TransparentFX
