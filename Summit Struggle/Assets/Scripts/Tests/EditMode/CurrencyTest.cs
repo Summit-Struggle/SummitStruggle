@@ -14,37 +14,24 @@ public class CurrencyTest
     [Test]
     public void startingCurrency()
     {
-        Currency start = new Currency();
+        //start clean
         int check = 0;
+        currency.SetCoins(0);
 
-        Debug.Log("Currency: " + start.getCoins());
-        Assert.AreEqual(start.getCoins(), check);
+        Debug.Log("Currency: " + currency.GetCoins());
+        Assert.AreEqual(currency.GetCoins(), check);
     }
 
      [Test]
     public void AddCurrency()
     {
-        Currency currencyInstance = new Currency();
-
+        //reset  values
+        currency.SetCoins(0);
         //call addCurrency
-        currencyInstance.gainCoins(30);
 
         //check in currency = expected value
-        // Use the Assert class to test conditions
-        Assert.AreEqual(currencyInstance.gainCoins(30), 30);
+        Assert.AreEqual(currency.GainCoins(30), 30);
     }
-
-    // public void AddCurrencyText()
-    // {
-    //     Currency nextCurrency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
-    //     //get text UI
-        
-    //     //call addCurrency
-    //     nextCurrency.gainCoins(30);
-
-    //     //check UI text = expected value after adding currency
-    //     Assert.AreEqual(nextCurrency.getCurrency(), "30");
-    // }
 
    
 }

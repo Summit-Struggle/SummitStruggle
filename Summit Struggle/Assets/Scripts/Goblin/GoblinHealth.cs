@@ -36,7 +36,8 @@ public class GoblinHealth : MonoBehaviour
                //Start death animation
                 playerLevel.XP += 150;
                 anim.SetTrigger("die");
-                currency.gainCoins(20);
+                currency.GainCoins(20);
+
         }
     }
 

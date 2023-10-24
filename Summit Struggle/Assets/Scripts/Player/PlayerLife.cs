@@ -101,6 +101,7 @@ public class PlayerLife : MonoBehaviour
 
     public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
+        Debug.Log("Healing...");
         if((health + amount) > maxhealth)
         {
             health = maxhealth;
@@ -118,9 +119,24 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(maxhealth);
     }
 
+    //increase max health when upgrade bought in shop
+    public void UpdateMaxHealth(int amount)
+    {
+        maxhealth += amount;
+        //heal for this amount so it matches
+        HealPlayer(amount);
+    } 
+
     public int getHealth ()
     {
-        return this.health;
+
+        return health;
+    }
+
+      public void SetCurrentHealth (int amount)
+    {
+        health = amount;
+        healthBar.SetHealth(health);
     }
 
     public int getMaxHealth ()

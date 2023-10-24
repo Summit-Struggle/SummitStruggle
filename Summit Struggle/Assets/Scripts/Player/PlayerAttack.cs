@@ -64,6 +64,12 @@ public class PlayerAttack : MonoBehaviour
        
     }
 
+    public int IncreaseAttack(int amount)
+    {
+        damage += amount;
+        return damage;
+    }
+
 
      private void OnDrawGizmos()
     {

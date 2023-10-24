@@ -11,6 +11,11 @@ TagManager:
   - Death
   - Currency
   - CoinText
+  - Shop
+  - ShopHealth
+  - ShopAttack
+  - ShopMaxHealth
+  - BuyMessage
   layers:
   - Default
   - TransparentFX
