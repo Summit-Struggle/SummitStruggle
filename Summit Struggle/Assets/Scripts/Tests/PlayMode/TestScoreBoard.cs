@@ -12,8 +12,6 @@ public class TestScoreBoard
     public IEnumerator Setup()
     {
         yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Level");
-        //GameObject scoreBoardObject = new GameObject();
-        //scoreBoard = scoreBoardObject.AddComponent<ScoreBoard>();
         scoreBoard = Object.FindObjectOfType<ScoreBoard>();
         yield return null; // Wait for a frame update
     }
@@ -38,11 +36,11 @@ public class TestScoreBoard
         scoreBoard.Coins.text = "Coins: 100";
         scoreBoard.Kills.text = "Kills: 10";
 
-        yield return null; // Wait for a frame update
 
         Assert.AreEqual("Level: 5", scoreBoard.Level.text);
         Assert.AreEqual("Coins: 100", scoreBoard.Coins.text);
         Assert.AreEqual("Kills: 10", scoreBoard.Kills.text);
+        yield return null; // Wait for a frame update
     }
 
     [UnityTest]
