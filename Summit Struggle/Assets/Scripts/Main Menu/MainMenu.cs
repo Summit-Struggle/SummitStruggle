@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
+    public void PlayGame()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
     // Called when we click the "Play" button.
     public void OnPlayButton ()
     {
