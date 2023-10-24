@@ -1754,7 +1754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd45f22c061454c66b867fb771e49ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scenename: Scene2
+  Scenename: SampleScene
 --- !u!61 &324290053
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12728,8 +12728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc91fa6deb0d0274a91b79944ce1b467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cherriesText: {fileID: 0}
-  collectionSoundEffect: {fileID: 0}
 --- !u!114 &753127254
 MonoBehaviour:
   m_ObjectHideFlags: 0
