@@ -67,9 +67,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
         {
 
-            //=======
-            dirX = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+            //dirX = Input.GetAxisRaw("Horizontal");
+            //rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
             if (IsGrounded() && !Input.GetKeyDown(keybindUI.GetKeyBinding("Jump")))
             {
