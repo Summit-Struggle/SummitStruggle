@@ -4,12 +4,14 @@ using System.IO;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SaveLoad : MonoBehaviour
 {
 
-    //number of enemys
-    int numOfEnemys = 1;
+    //holds a array of the enemys
+    [SerializeField] private GameObject[] goblins;
+    private int numberOfGoblins;
 
     private string filePathPrimary;
     private string filePathSecondary;
@@ -32,13 +34,15 @@ public class SaveLoad : MonoBehaviour
         //gets the other needed scripts to access player data needed for saves
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
-        goblinHealthScript = GameObject.FindGameObjectWithTag("goblin").GetComponent<GoblinHealth>();
+        //goblinHealthScript = GameObject.FindGameObjectWithTag("goblin").GetComponent<GoblinHealth>();
 
         //file paths to both save files. Dynamic paths, so they will work when parents folders are moved
         //very delicate, don't change if possible.
         filePathPrimary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFilePrimary.txt");
         filePathSecondary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFileSecondary.txt");
         //2 save files so that the user can delete their current save and revert back to the previous.
+
+        numberOfGoblins = goblins.Length;
     }
 
     private void Start()
@@ -50,6 +54,8 @@ public class SaveLoad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        numberOfGoblins = goblins.Count(item => item != null);
+
         //when U is pressed load the previous save
         if (Input.GetKeyDown(KeyCode.U))
         {
@@ -83,32 +89,8 @@ public class SaveLoad : MonoBehaviour
                 HidePopupText();
             }
         }
-
     }
 
-    void ShowPopupText(string message, float duration)
-    {
-        // Set the text message
-        popUpText.text = message;
-
-        // Enable the text element
-        popUpText.enabled = true;
-
-        // Set the timer
-        popupTimer = duration;
-
-        // Set popup visibility flag
-        textVisibility = true;
-    }
-
-    void HidePopupText()
-    {
-        // Disable the text element
-        popUpText.enabled = false;
-
-        // Reset popup visibility flag
-        textVisibility = false;
-    }
 
     public void saveGame()
     {
@@ -148,14 +130,23 @@ public class SaveLoad : MonoBehaviour
         //the players xp
         string xp = playerLevel.getXp() + "";
 
-        //goblic location
-        string goblinLocation = goblicTrasform.position.x + " " + goblicTrasform.position.y + " " + goblicTrasform.position.z;
-
-        //goblics health
-        string goblinHealth = goblinHealthScript.getCurrentHealthForSave() + "";
 
         //all save contents
-        string saveContents = position + "\n" + health + "\n" + xp + "\n" + goblinLocation + "\n" + goblinHealth;
+        string saveContents = numberOfGoblins + "\n" + position + "\n" + health + "\n" + xp;
+
+
+        for (int i = 0; i < goblins.Length; i++)
+        {
+            //saves location
+            Transform goblicLocation = goblins[i].transform;
+            string location = goblicLocation.position.x + " " + goblicLocation.position.y + " " + goblicLocation.position.z;
+
+            //saves health
+            GoblinHealth goblinHealthScript = goblins[i].GetComponent<GoblinHealth>();
+            string goblinHealth = goblinHealthScript.getCurrentHealthForSave() + "";
+
+            saveContents += "\n" + location + "\n" + goblinHealth;
+        }
 
         //writes the save information onto a txt file.
         try
@@ -168,8 +159,6 @@ public class SaveLoad : MonoBehaviour
             Debug.Log("Directory not found: " + e);
         }
     }
-
-
 
     public void LoadSave()
     {
@@ -202,41 +191,97 @@ public class SaveLoad : MonoBehaviour
         try
         {
             saveFileLines = File.ReadAllLines(filePath);
-        } catch (DirectoryNotFoundException e)
+        }
+        catch (DirectoryNotFoundException e)
         {
             Debug.Log("Directory not found: " + e);
             return;
         }
 
-        string[] playerPos = saveFileLines[0].Split(" ");
-        string[] goblicPos = saveFileLines[3].Split(" ");
 
+        //stores the information of from the save file into a readable format
+        string[] playerPos = saveFileLines[1].Split(" ");
+
+        List<string[]> goblinPositions = new List<string[]>();
+        string[] goblicHealths = new string[numberOfGoblins];
+
+        int counterPos = 4;
+        int counterHeal = 0;
+
+        //starts at 4 as thats the line that its on
+        for (int i = 0; i < numberOfGoblins; i++)
+        {
+            //takes the goblin's position in a string array
+            goblinPositions.Add(saveFileLines[counterPos].Split(" "));
+            //sets the goblins health at the index after the pos
+            goblicHealths[counterHeal++] = saveFileLines[++counterPos];
+            counterPos++;
+        }
 
         //sets the players pos to the saved pos
         playerTrasform.position = new Vector3(float.Parse(playerPos[0]), float.Parse(playerPos[1]), playerTrasform.position.z);
 
         //sets the players health from saved health
-        playerLife.setHealthFromSave(int.Parse(saveFileLines[1]));
+        playerLife.setHealthFromSave(int.Parse(saveFileLines[2]));
 
         //sets the players xp from saved xp
-        playerLevel.SetXP(float.Parse(saveFileLines[2]));
+        playerLevel.SetXP(float.Parse(saveFileLines[3]));
 
-        //sets the goblin's location from save file
-        goblicTrasform.position = new Vector3(float.Parse(goblicPos[0]), float.Parse(goblicPos[1]), goblicTrasform.position.z);
+        for (int i = 0; i < numberOfGoblins; i++)
+        {
+            //gets the goblins transform
+            Transform goblinTransform = goblins[i].transform;
+            //sets the transform x and y to the i'th position of the goblin positions at the x and y index's (goblinPositions[0][0] = first element of first string array)
+            goblinTransform.position = new Vector3(float.Parse(goblinPositions[i][0]), float.Parse(goblinPositions[i][1]), goblinTransform.position.z);
 
-        goblinHealthScript.setCurrentHealthForSave(float.Parse(saveFileLines[4]));
+            GoblinHealth goblinHealthScript = goblins[i].GetComponent<GoblinHealth>();
+            goblinHealthScript.setCurrentHealthForSave(float.Parse(goblicHealths[i]));
+
+            if (goblinHealthScript.getCurrentHealthForSave() > 0)
+            {
+                goblinHealthScript.setActive(true);
+            } else
+            {
+                goblinHealthScript.setActive(false);
+            }
+
+        }
     }
 
-    public void deleteLastSave ()
+    public void deleteLastSave()
     {
         //delets first save if it exists
-        if(File.Exists(filePathPrimary))
+        if (File.Exists(filePathPrimary))
         {
             File.Delete(filePathPrimary);
-        } else //otherwise deletes second save.
+        }
+        else //otherwise deletes second save.
         {
             File.Delete(filePathSecondary);
         }
+    }
+    void ShowPopupText(string message, float duration)
+    {
+        // Set the text message
+        popUpText.text = message;
+
+        // Enable the text element
+        popUpText.enabled = true;
+
+        // Set the timer
+        popupTimer = duration;
+
+        // Set popup visibility flag
+        textVisibility = true;
+    }
+
+    void HidePopupText()
+    {
+        // Disable the text element
+        popUpText.enabled = false;
+
+        // Reset popup visibility flag
+        textVisibility = false;
     }
 
 

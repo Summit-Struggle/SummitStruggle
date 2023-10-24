@@ -15,14 +15,27 @@ public class GoblinHealth : MonoBehaviour
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
 
+    //private bool alive;
+
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
+        //alive = true;
+        
     }
-   public void TakeDamage(float _damage)
+
+    private void Update()
+    {
+        //if (currentHealth <= 0)
+        //{
+        //    setActive(false);
+        //} 
+    }
+
+    public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -32,18 +45,36 @@ public class GoblinHealth : MonoBehaviour
         }
         else
         {
-               //Start death animation
-                playerLevel.XP += 150;
-                anim.SetTrigger("die");
+            //Start death animation
+            playerLevel.XP += 150;
+            anim.SetTrigger("die");
         }
     }
 
    
+
+
     public void Destroy(){
           foreach (Behaviour component in components){ 
                     component.enabled = false;
                     }
          Destroy(obj);
+    }
+
+    public void setActive (bool alive)
+    {
+        if(alive)
+        {
+            obj.SetActive(true);
+        } else
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    public void setDead ()
+    {
+        setActive(false);
     }
 
     public float getCurrentHealthForSave ()
