@@ -20,9 +20,6 @@ public class SaveLoad : MonoBehaviour
     private PlayerLevel playerLevel;
     [SerializeField] private Transform playerTrasform;
 
-    [SerializeField] private Transform goblicTrasform;
-    private GoblinHealth goblinHealthScript;
-
     [SerializeField] private Text popUpText;
     private float popupTimer;
     private bool textVisibility;
