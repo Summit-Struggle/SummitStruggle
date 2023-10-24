@@ -21,10 +21,13 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private GoblinHealth enemyHealth;
 
+    private int numOfKills;
+
   
   private void Awake()
   {
     anim = GetComponent<Animator>();
+        numOfKills = 0;
 
   }
 
