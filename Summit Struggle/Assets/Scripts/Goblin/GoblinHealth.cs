@@ -15,24 +15,12 @@ public class GoblinHealth : MonoBehaviour
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
 
-    //private bool alive;
-
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
-        //alive = true;
-        
-    }
-
-    private void Update()
-    {
-        //if (currentHealth <= 0)
-        //{
-        //    setActive(false);
-        //} 
     }
 
     public void TakeDamage(float _damage)
@@ -50,9 +38,6 @@ public class GoblinHealth : MonoBehaviour
             anim.SetTrigger("die");
         }
     }
-
-   
-
 
     public void Destroy(){
           foreach (Behaviour component in components){ 

@@ -15,7 +15,6 @@ public class SaveLoad : MonoBehaviour
 
     private string filePathPrimary;
     private string filePathSecondary;
-    private string testPath;
 
     private PlayerLife playerLife;
     private PlayerLevel playerLevel;
@@ -34,7 +33,6 @@ public class SaveLoad : MonoBehaviour
         //gets the other needed scripts to access player data needed for saves
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
-        //goblinHealthScript = GameObject.FindGameObjectWithTag("goblin").GetComponent<GoblinHealth>();
 
         //file paths to both save files. Dynamic paths, so they will work when parents folders are moved
         //very delicate, don't change if possible.

@@ -17560,18 +17560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7eaca41bbe40140ab917c3fbf47578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1485383559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485383556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5c09c589979e2148ac71a4abf84552c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1571478024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063296669699230575, guid: 4f06f109d8daaa341ab7cdf9ca6122a3, type: 3}
@@ -26109,10 +26097,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1352569505241095565, guid: dcc3b550033cb574897d07b16b294161, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1485383559}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc3b550033cb574897d07b16b294161, type: 3}
 --- !u!1 &3059798048931404957 stripped
 GameObject:
@@ -26516,8 +26501,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc91fa6deb0d0274a91b79944ce1b467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cherriesText: {fileID: 0}
-  collectionSoundEffect: {fileID: 0}
 --- !u!114 &8766232173808245648
 MonoBehaviour:
   m_ObjectHideFlags: 0
