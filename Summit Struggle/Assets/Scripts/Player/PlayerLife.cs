@@ -101,6 +101,7 @@ public class PlayerLife : MonoBehaviour
 
     public void HealPlayer(int amount) // need to update method and form an equation to calculate what the players new health should be.
     {
+        Debug.Log("Healing...");
         if((health + amount) > maxhealth)
         {
             health = maxhealth;
@@ -128,7 +129,8 @@ public class PlayerLife : MonoBehaviour
 
     public int GetHealth ()
     {
-        return this.health;
+
+        return health;
     }
 
       public void SetCurrentHealth (int amount)

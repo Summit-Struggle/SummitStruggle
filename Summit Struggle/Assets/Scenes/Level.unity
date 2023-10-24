@@ -9775,6 +9775,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef8c67870b2f0b4d8668386b2130030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currency: {fileID: 0}
+  playerLife: {fileID: 0}
   itemName: {fileID: 408111863}
   itemPrice: {fileID: 1763325821}
   healing: 20
@@ -30546,7 +30548,7 @@ GameObject:
   - component: {fileID: 1877486580}
   m_Layer: 5
   m_Name: NumOfCoins
-  m_TagString: Untagged
+  m_TagString: CoinText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

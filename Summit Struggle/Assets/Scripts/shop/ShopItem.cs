@@ -37,6 +37,10 @@ public class ShopItem : MonoBehaviour
        if(CheckPrice(price)){
            switch(item)
            {
+            case "Restore Health":
+                currency.LoseCoins(price);
+                RestoreHealth();
+                break;
             case "Increase Attack":
                 currency.LoseCoins(price);
                 IncreaseAttack();

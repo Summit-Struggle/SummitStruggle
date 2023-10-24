@@ -13,6 +13,7 @@ public class Currency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currency = GameObject.FindGameObjectWithTag("CoinText").GetComponent<Text>();
         numOfCoins = 0;
         SetCurrency();
         Debug.Log("Starting Currency: " + numOfCoins);
@@ -35,7 +36,20 @@ public class Currency : MonoBehaviour
 
     //SetCoins for testing
     public void SetCoins(int amount){
-        numOfCoins = amount;
+         if(currency != null){
+            numOfCoins = amount;
+
+            Debug.Log("Coins != null, New currency: " + amount);
+        }
+        else{
+            //get currency then apply
+            currency = GameObject.FindGameObjectWithTag("CoinText").GetComponent<Text>();
+
+            numOfCoins = amount;
+
+            Debug.Log("currency test = null, New currency: " + amount);
+        }
+      
         SetCurrency();
         Debug.Log("SetTestCoins: " + numOfCoins);
     }

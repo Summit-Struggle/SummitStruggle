@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class RestoreHealth : MonoBehaviour
 {
-    private Currency currency;
+    public Currency currency;
 
-     private PlayerLife playerLife;
+     public PlayerLife playerLife;
 
 
     //get Shop items
-    [SerializeField] private Text itemName;
-    [SerializeField] private Text itemPrice;
+    [SerializeField] public Text itemName;
+    [SerializeField] public Text itemPrice;
    //amount set for healing
      [SerializeField] private int healing = 20;
 
@@ -29,8 +29,8 @@ public class RestoreHealth : MonoBehaviour
       
         
         int price = int.Parse(itemPrice.text);
-        string item = itemName.text.ToString();
-        Debug.Log("buying " + item + "...");
+        // string item = itemName.text.ToString();
+        // Debug.Log("buying " + item + "...");
 
           if(CheckPrice(price))
           {
@@ -43,6 +43,7 @@ public class RestoreHealth : MonoBehaviour
 
     public void HealPlayer()
     {
+        Debug.Log("Healing Player...");
         playerLife.HealPlayer(healing);
     }
 
