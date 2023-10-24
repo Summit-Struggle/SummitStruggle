@@ -144,4 +144,9 @@ public class PlayerLife : MonoBehaviour
         return this.maxhealth;
     }
 
+    public void setHealthFromSave (int health)
+    {
+        healthBar.SetHealth(health);
+    }
+
 }
