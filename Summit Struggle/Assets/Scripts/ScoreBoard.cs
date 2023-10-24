@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class ScoreBoard : MonoBehaviour
 {
     //image
-    [SerializeField] private GameObject scoreBoardBackground;
-    [SerializeField] private Text Coins;
-    [SerializeField] private Text Level;
-    [SerializeField] private Text Enemy;
+    [SerializeField] public GameObject scoreBoardBackground;
+    [SerializeField] public Text Coins;
+    [SerializeField] public Text Level;
+    [SerializeField] public Text Kills;
 
     private PlayerLevel playerLevel;
     private Currency currency;
+    private PlayerAttack playerAttack;
 
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class ScoreBoard : MonoBehaviour
     {
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
         currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
 
         scoreBoardBackground.SetActive(false);
     }
@@ -34,12 +36,11 @@ public class ScoreBoard : MonoBehaviour
 
         Level.text = "Level: " + playerLevel.level;
         Coins.text = "Coins: " + currency.getnumOfCoins();
-
-
+        Kills.text = "Kills: " + playerAttack.numOfKills;
     }
 
 
-    private void toggleScoreBoard ()
+    public void toggleScoreBoard ()
     {
         scoreBoardBackground.SetActive(!scoreBoardBackground.activeSelf);
     }

@@ -21,13 +21,13 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private GoblinHealth enemyHealth;
 
-    private int numOfKills;
+    public int numOfKills;
 
   
   private void Awake()
   {
     anim = GetComponent<Animator>();
-        numOfKills = 0;
+    numOfKills = 0;
 
   }
 
@@ -55,6 +55,11 @@ public class PlayerAttack : MonoBehaviour
        {
             enemyHealth = hit.transform.GetComponent<GoblinHealth>();
             enemyHealth.TakeDamage(damage);
+
+            if(enemyHealth.getCurrentHealthForSave() <= 0)
+            {
+                numOfKills++;
+            }
        }
        
     }
