@@ -6,10 +6,23 @@ using UnityEngine.TestTools;
 
 public class ShopTest
 {
-    private ShopItem Item = GameObject.FindGameObjectWithTag("ShopHealth").GetComponent<ShopItem>();
-    private PlayerLife Life = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
+     private ShopItem Item;
+    private PlayerLife Life;
 
+    [SetUp]
+    public void SetUp()
+    {
+        // Find game objects with tags
+        GameObject shopHealthObject = GameObject.FindWithTag("ShopHealth");
 
+        // Check if the objects were found
+        Assert.IsNotNull(shopHealthObject, "ShopHealth game object not found");
+
+        // Get the components
+        Item = shopHealthObject.GetComponent<ShopItem>();
+
+        Assert.IsNotNull(Item, "ShopItem component not found on ShopHealth");
+    }
 
     // A Test behaves as an ordinary method
     [Test]
@@ -40,9 +53,10 @@ public class ShopTest
     public void RestoreHealthCheck()
     {
         Item.SetPlayerHealth(60);
-        Item.RestoreHealth();
+        int expected = 80;
+        Debug.Log("Restoring health: + 20 ");
 
-        Assert.AreEqual(Item.GetPlayerHealth(), 80);
+        Assert.AreEqual(Item.RestoreHealth(), expected);
     }
 
     //test coins are lost when item bought
@@ -52,7 +66,7 @@ public class ShopTest
         Item.SetName("Restore Health");
         Item.SetPrice(10);
 
-        Item.buy();
+        Item.Buy();
 
         Assert.AreEqual(Item.GetCurrency(), 40);
     }

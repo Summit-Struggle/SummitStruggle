@@ -19,35 +19,56 @@ public class ShopItem : MonoBehaviour
      [SerializeField] private int healing = 20;
     public void start()
     {
-        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+          playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
         currency = GameObject.FindGameObjectWithTag("Currency").GetComponent<Currency>();
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
 
     }
     
 
-    public bool buy(){
+    public void Buy(){
+      
+        
         int price = int.Parse(itemPrice.text);
-        Debug.Log("buying " + itemName.text + "...");
+        string item = itemName.text.ToString();
+        Debug.Log("buying " + item + "...");
+
 
        if(CheckPrice(price)){
-            if(itemName.text.Equals("Restore Health"))
-            {
+           switch(item)
+           {
+            case "Increase Attack":
                 currency.LoseCoins(price);
-                RestoreHealth();
-            }
+                IncreaseAttack();
+                break;
+            case "Increase Max Health":
+                currency.LoseCoins(price);
+                IncreaseMaxHealth();
+                break;
+            default: 
+            Debug.Log("Invalid item");
+            break;
 
-            else{
-                Debug.Log("No item in shop!");
-            }
+           }
        }
 
-       return false;
 
     }
-    public void RestoreHealth()
+
+    public void IncreaseMaxHealth(){
+        //defaullt amount increase each time
+        int amount = 10;
+        playerLife.UpdateMaxHealth(amount);
+    }
+
+    public void IncreaseAttack(){
+        Debug.Log(playerAttack.IncreaseAttack(5));
+    }
+    public int RestoreHealth()
     {
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerLife.HealPlayer(healing);
+        return playerLife.GetHealth();
     }
 
     public bool CheckPrice(int price)
@@ -77,14 +98,11 @@ public class ShopItem : MonoBehaviour
         return currency.GetCoins();
     }
 
-    public int GetPlayerHealth()
-    {
-        return playerLife.GetHealth();
-    }
 
-     public int SetPlayerHealth(int amount)
+     public void SetPlayerHealth(int amount)
     {
+        playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();
         playerLife.SetCurrentHealth(amount);
-        return playerLife.GetHealth();
+        Debug.Log("New player health: " + amount);
     }
 }

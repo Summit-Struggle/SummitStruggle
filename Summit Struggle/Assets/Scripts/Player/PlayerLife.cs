@@ -119,7 +119,7 @@ public class PlayerLife : MonoBehaviour
     }
 
     //increase max health when upgrade bought in shop
-    private void UpdateMaxHealth(int amount)
+    public void UpdateMaxHealth(int amount)
     {
         maxhealth += amount;
         //heal for this amount so it matches
