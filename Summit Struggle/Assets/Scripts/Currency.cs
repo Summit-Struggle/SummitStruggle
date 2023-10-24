@@ -47,6 +47,11 @@ public class Currency : MonoBehaviour
     }
 
 
+    public int getnumOfCoins ()
+    {
+        return numOfCoins;
+    }
+
     //can set tests for currency increasing when enemy dies
 
     //test - when player buys something currency decreases.
