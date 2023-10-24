@@ -133,4 +133,9 @@ public class PlayerLife : MonoBehaviour
         healthBar.SetHealth(health);
     }
 
+    public void ResetGame()
+    {
+        Die();
+    }
+
 }
