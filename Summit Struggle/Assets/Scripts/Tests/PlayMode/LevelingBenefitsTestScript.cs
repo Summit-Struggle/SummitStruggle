@@ -13,8 +13,10 @@ public class LevelingBenefitsTestScript
     [UnitySetUp]
     public IEnumerator Setup()
     {
-        yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("SampleScene");
-        
+        yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Level");
+
+        yield return new WaitForSeconds(0.5f);
+
         levelingBenefits = Object.FindObjectOfType<LevelingBenefits>();
         playerLevel = Object.FindObjectOfType<PlayerLevel>();
     }
@@ -27,6 +29,7 @@ public class LevelingBenefitsTestScript
 
         float coins = levelingBenefits.BenefitCalculation(); //calculates the coin using the benefit calculation method
         float expectedCoins = 5 * Mathf.Ceil(playerLevel.level); //calcukates the expected coins using the math for it and player level.
+        yield return null;
         Assert.AreEqual(expectedCoins , coins, 0.001f); //checks if the values match
 
         yield return null;
@@ -49,7 +52,7 @@ public class LevelingBenefitsTestScript
     public IEnumerator TestRewardsText()
     {
         playerLevel.level = 3;  //sets the player level that is used to determine the expected result
-        levelingBenefits.BenefitCalculation(); //calls the method which calculate the benefits, but al;s
+        levelingBenefits.BenefitCalculation(); //calls the method which calculate the benefits, but also
 
         Text rewardsText = levelingBenefits.rewards; //gets the rewards text from LevelingBenefits and saves it into this text variable
 
