@@ -15,16 +15,11 @@ public class NewTestScript
     [UnitySetUp]
     public IEnumerator Setup()
     {
-        yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("SampleScene");
+        yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Level");
 
         saveLoad = Object.FindObjectOfType<SaveLoad>();
         playerLife = Object.FindObjectOfType<PlayerLife>();
         playerLevel = Object.FindObjectOfType<PlayerLevel>();
-
-        Debug.Log(saveLoad == null);
-
-        // Set up playerTransform to avoid null reference issues
-        //saveLoad.playerTrasform = new GameObject().transform;
     }
 
     [UnityTest]

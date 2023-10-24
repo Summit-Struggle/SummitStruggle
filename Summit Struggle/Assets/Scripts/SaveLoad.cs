@@ -20,14 +20,10 @@ public class SaveLoad : MonoBehaviour
     private PlayerLevel playerLevel;
     [SerializeField] private Transform playerTrasform;
 
-    [SerializeField] private Transform goblicTrasform;
-    private GoblinHealth goblinHealthScript;
-
     [SerializeField] private Text popUpText;
     private float popupTimer;
     private bool textVisibility;
 
-    // Start is called before the first frame update
     void Awake()
     {
         //gets the other needed scripts to access player data needed for saves
