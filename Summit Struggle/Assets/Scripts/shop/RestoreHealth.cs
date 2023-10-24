@@ -8,7 +8,7 @@ public class RestoreHealth : MonoBehaviour
     public Currency currency;
 
      public PlayerLife playerLife;
-     public GameObject messagePrompt;
+     [SerializeField] public GameObject messagePrompt;
 
 
     //get Shop items
@@ -45,7 +45,8 @@ public class RestoreHealth : MonoBehaviour
       }
 
     public void SendConfirmation(){
-        messagePrompt.SetActive(true);
+       messagePrompt = GameObject.FindGameObjectWithTag("BuyMessage");
+       messagePrompt.SetActive(true);
     }
 
     public void HealPlayer()
