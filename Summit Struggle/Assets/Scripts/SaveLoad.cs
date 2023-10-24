@@ -18,7 +18,7 @@ public class SaveLoad : MonoBehaviour
 
     private PlayerLife playerLife;
     private PlayerLevel playerLevel;
-    [SerializeField] private Transform playerTrasform;
+    [SerializeField] public Transform playerTrasform;
 
     [SerializeField] private Text popUpText;
     private float popupTimer;
@@ -34,6 +34,7 @@ public class SaveLoad : MonoBehaviour
         //file paths to both save files. Dynamic paths, so they will work when parents folders are moved
         //very delicate, don't change if possible.
         filePathPrimary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFilePrimary.txt");
+        Debug.Log(filePathPrimary);
         filePathSecondary = Path.Combine(Application.dataPath, "Scripts\\Files", "saveFileSecondary.txt");
         //2 save files so that the user can delete their current save and revert back to the previous.
 
@@ -277,6 +278,11 @@ public class SaveLoad : MonoBehaviour
 
         // Reset popup visibility flag
         textVisibility = false;
+    }
+
+    public string getfilePathPrimary()
+    {
+        return filePathPrimary;
     }
 
 

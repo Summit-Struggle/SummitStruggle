@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GoblinHealth : MonoBehaviour
 {
-    [Header ("Health")]
+    [Header("Health")]
     [SerializeField] private float startingHealth;
     [SerializeField] private float currentHealth;
     private Animator anim;
@@ -14,7 +14,7 @@ public class GoblinHealth : MonoBehaviour
 
     private SpriteRenderer spriteRend;
     private PlayerLevel playerLevel;
-   [SerializeField] private Currency currency;
+    [SerializeField] private Currency currency;
     private bool isDead;
 
     private void Awake()
@@ -25,7 +25,7 @@ public class GoblinHealth : MonoBehaviour
         playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevel>();
         isDead = false;
     }
-   public void TakeDamage(float _damage)
+    public void TakeDamage(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -35,20 +35,60 @@ public class GoblinHealth : MonoBehaviour
         }
         else
         {
-               //Start death animation
-                playerLevel.XP += 150;
-                isDead = true;
-                anim.SetTrigger("die");
-                currency.gainCoins(20);
+            //Start death animation
+            playerLevel.XP += 150;
+            isDead = true;
+            anim.SetTrigger("die");
+            currency.gainCoins(20);
 
         }
     }
 
-   
-    public void Destroy(){
-          foreach (Behaviour component in components){ 
-                    component.enabled = false;
-                    }
-         Destroy(obj);
+
+    public void Destroy()
+    {
+        foreach (Behaviour component in components)
+        {
+            component.enabled = false;
+        }
+        Destroy(obj);
     }
+
+    public void setActive(bool alive)
+    {
+        if (alive)
+        {
+            obj.SetActive(true);
+        }
+        else
+        {
+            obj.SetActive(false);
+        }
+    }
+    public void setDead()
+    {
+        setActive(false);
+    }
+
+    public float getCurrentHealthForSave()
+    {
+        return currentHealth;
+    }
+
+    public void setCurrentHealthForSave(float amount)
+    {
+        currentHealth = amount;
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
